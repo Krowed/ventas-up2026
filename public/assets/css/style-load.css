@@ -1,0 +1,92 @@
+/* --- NUEVAS REGLAS PARA DESVECIMIENTO SUAVE --- */
+.ID-load {
+    width: 100%;
+    height: 100vh;
+    z-index: 9999; /* Asegúrate que esté por encima de todo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Importante para que cubra toda la pantalla */
+    top: 0;
+    left: 0;
+    background-color: #ffffff; /* Ajusta al color de fondo de tu app */
+    transition: opacity 0.6s ease, visibility 0.6s; /* Esto hace el fade-out */
+}
+
+/* Clase que aplicaremos con JS para ocultarlo */
+.ID-load.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Estado inicial del contenido del Dashboard */
+.main-wrapper {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+/* Clase que aplicaremos con JS para mostrar el contenido */
+.main-wrapper.content-visible {
+    opacity: 1;
+}
+
+/* --- TU CÓDIGO DE ANIMACIÓN (Optimizado) --- */
+.ID-load > div {
+    text-align: center;
+}
+
+.ID-load .id-load-content {
+    text-align: center;
+    margin-top: 5px;
+    padding-top: 15px;
+    border-top: solid 1px #aaa;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ID-load .id-load-content .id-load-icon {
+    box-sizing: border-box;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    filter: grayscale(1);
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    animation: pulse 1s ease infinite;
+}
+
+/* Delays de los iconos */
+.ID-load .id-load-content .id-load-icon:nth-child(6) { animation-delay: 0.83333s; }
+.ID-load .id-load-content .id-load-icon:nth-child(5) { animation-delay: 0.66667s; }
+.ID-load .id-load-content .id-load-icon:nth-child(4) { animation-delay: 0.5s; }
+.ID-load .id-load-content .id-load-icon:nth-child(3) { animation-delay: 0.33333s; }
+.ID-load .id-load-content .id-load-icon:nth-child(2) { animation-delay: 0.16667s; }
+.ID-load .id-load-content .id-load-icon:nth-child(1) { margin-left: 0; animation-delay: 0s; }
+
+.ID-load .id-load-content .id-load-icon svg { width: 60%; height: auto; }
+.ID-load .id-load-content .id-load-icon svg path { fill: #ffffff; }
+
+/* Colores de iconos */
+.id-shop { background-color: #488fff; }
+.id-cart { background-color: #aa77dd; }
+.id-register { background-color: #7775d9; }
+.id-report { background-color: #17ce7b; }
+.id-sale { background-color: #feaa55; }
+.id-invetory { background-color: #0dd5aa; }
+
+@keyframes pulse {
+    0%, 50%, 100% {
+        transform: scale(1);
+        filter: grayscale(1);
+        opacity: 0.7;
+    }
+    25% {
+        transform: scale(1.35);
+        filter: grayscale(0);
+        opacity: 1;
+    }
+}
