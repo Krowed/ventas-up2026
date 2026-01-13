@@ -4174,9 +4174,14 @@
   background-image: linear-gradient(180deg, #8351FD 0%, #5112A9 100%) !important;
 }
 
-.bg-primary-gradient {
-  background-image: linear-gradient(120deg, #4c00fb 0%, #6725ff 60%, #7539ff 100%) !important;
+:root[data-color=custom] .bg-primary-gradient {
+        background: var(--primary-gradient) !important;
+        border: none;
 }
+
+:root[data-color=custom] .bg-primary-gradient:hover {
+        background: oklch(55% .214 259.815) !important;
+    }
 
 .bg-secondary-gradient {
   background-image: linear-gradient(120deg, #161c23 0%, #26313c 60%, #2e3b48 100%) !important;
@@ -4222,6 +4227,7 @@
   --primary: oklch(62.3% .214 259.815);
   --primary-rgb: 0, 153, 255; /* Este es el equivalente aproximado para que funcionen las transparencias */
   --primary-hover: oklch(55% .214 259.815);
+  --primary-gradient: linear-gradient(180deg, var(--primary) 0%, oklch(45% .214 259.815) 100%);
 }
 
 [data-color=primary] {
