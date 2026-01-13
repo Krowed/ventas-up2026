@@ -2,35 +2,47 @@
 .ID-load {
     width: 100%;
     height: 100vh;
-    z-index: 9999; /* Asegúrate que esté por encima de todo */
+    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed; /* Importante para que cubra toda la pantalla */
+    position: fixed;
     top: 0;
     left: 0;
-    background-color: #ffffff; /* Ajusta al color de fondo de tu app */
-    transition: opacity 0.6s ease, visibility 0.6s; /* Esto hace el fade-out */
+    transition: opacity 0.6s ease, visibility 0.6s;
 }
 
-/* Clase que aplicaremos con JS para ocultarlo */
+[data-bs-theme="light"] .ID-load {
+    background-color: #F7F8F9 !important;
+}
+
+/* MODO DARK / CUSTOM: Tu azul especial */
+[data-bs-theme="dark"] .ID-load {
+    background-color: #252630 !important;
+}
+
+/* Ajuste de línea para Dark */
+[data-bs-theme="dark"] .ID-load .id-load-content,
+[data-color="custom"] .ID-load .id-load-content {
+    border-top: solid 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* --- CLASES PARA OCULTAR (JS) --- */
 .ID-load.fade-out {
     opacity: 0;
     visibility: hidden;
 }
 
-/* Estado inicial del contenido del Dashboard */
 .main-wrapper {
     opacity: 0;
     transition: opacity 0.8s ease-in-out;
 }
 
-/* Clase que aplicaremos con JS para mostrar el contenido */
 .main-wrapper.content-visible {
     opacity: 1;
 }
 
-/* --- TU CÓDIGO DE ANIMACIÓN (Optimizado) --- */
+/* --- TU CÓDIGO DE ANIMACIÓN (TOTALMENTE INTACTO) --- */
 .ID-load > div {
     text-align: center;
 }
@@ -68,7 +80,7 @@
 .ID-load .id-load-content .id-load-icon:nth-child(1) { margin-left: 0; animation-delay: 0s; }
 
 .ID-load .id-load-content .id-load-icon svg { width: 60%; height: auto; }
-.ID-load .id-load-content .id-load-icon svg path { fill: #ffffff; }
+.ID-load .id-load-content .id-load-icon svg path { fill: #ffffff !important; }
 
 /* Colores de iconos */
 .id-shop { background-color: #488fff; }

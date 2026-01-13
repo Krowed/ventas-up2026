@@ -2,15 +2,23 @@
 <html lang="es">
 
 <head>
-	<script>
-    // Bloque de ejecución inmediata para evitar parpadeo
-	    (function() {
-	        const layout = localStorage.getItem('layout') || 'single';
-	        const color = localStorage.getItem('color') || 'custom';
-	        document.documentElement.setAttribute('data-layout', layout);
-	        document.documentElement.setAttribute('data-color', color);
-	    })();
-	</script>
+<script>
+(function() {
+    const layout = localStorage.getItem('layout') || 'single';
+    const color = localStorage.getItem('color') || 'light'; 
+    
+    document.documentElement.setAttribute('data-layout', layout);
+    document.documentElement.setAttribute('data-color', color);
+
+    // Activamos el tema de Bootstrap
+    if (color === 'custom' || color === 'dark') {
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+    }
+    // NOTA: No forzamos backgroundColor aquí para que el CSS arriba funcione.
+})();
+</script>
 	<!-- Meta Tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,6 +27,14 @@
 	<meta name="description" content="Kanakku is a Sales, Invoices & Accounts Admin template for Accountant or Companies/Offices with various features for all your needs. Try Demo and Buy Now.">
 	<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
 	<meta name="author" content="Dreams Technologies">
+	<link rel="preload" href="fonts/outfit-regular.woff2" as="font" type="font/ttf" crossorigin>
+	<style>
+		body {
+            font-family: 'Outfit', sans-serif !important;
+            /* Evita que el texto desaparezca mientras carga */
+            visibility: visible !important; 
+        }
+	</style>
     <script src="assets/js/theme-script.js"></script>
 
 	<!-- Favicon -->
@@ -26,11 +42,6 @@
 
 	<!-- Apple Touch Icon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
-
-    <!-- Theme Script js -->
-    <link rel="preload" href="/fonts/Satoshi-Regular.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="/fonts/Satoshi-Bold.woff2" as="font" type="font/woff2" crossorigin>
-
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 

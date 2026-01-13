@@ -56,11 +56,20 @@
 43.sidebar
 
 ============================*/
-@import url("../../../../css2");
 /*============================
   2.mixins
 ============================*/
+@font-face {
+    font-family: 'Outfit';
+    /* Asegúrate de que la ruta apunte a donde guardaste el archivo */
+    src: url('../../fonts/outfit-regular.woff2') format('truetype'); 
+    font-weight: 100 900; /* Esto permite usar todos los grosores si es fuente variable */
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
+  --bs-body-font-family: 'Outfit', sans-serif !important;
   --sidenav-width: 276px;
   --sidenav-width-sm: 70px;
   --topbar-height: 55px;
