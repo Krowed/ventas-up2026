@@ -1453,7 +1453,7 @@
 				</div>
 				<!-- End Breadcrumb -->
 
-				<div class="bg-primary rounded welcome-wrap position-relative mb-3">
+				<div class="bg-secondary rounded welcome-wrap position-relative mb-3">
 
 					<!-- start row -->
 					<div class="row">
@@ -1471,7 +1471,7 @@
 					<!-- end row -->
 
 					<div class="position-absolute end-0 top-50 translate-middle-y p-2 d-none d-sm-block">
-						<img src="assets/img/icons/dashboard.svg" alt="img">
+						<img src="assets/img/icons/dashboard-BxFgfF4y.png" width="130" class="img-fluid" alt="img">
 					</div>
 				</div>
 

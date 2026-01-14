@@ -31,16 +31,15 @@
             visibility: visible !important; 
         }
 	</style>
-    <script src="assets/js/theme-script.js"></script>
+    <script src="{{ asset('assets/js/theme-script.js') }}"></script>
     
-    <script src="assets/js/theme-script.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/logo/favicon.ico') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/plugins/tabler-icons/tabler-icons.min.css">
-    <link rel="stylesheet" href="assets/css/iconsax.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/tabler-icons/tabler-icons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/iconsax.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 
 <body class="bg-white">
@@ -54,9 +53,37 @@
                     <div class="col-lg-5 mx-auto">
                         <form action="index.html" class="d-flex justify-content-center align-items-center">
                             <div class="d-flex flex-column justify-content-lg-center p-4 p-lg-0 pb-0 flex-fill">
-                                <div class="mx-auto mb-4 text-center">
-                                    <img src="{{ asset('assets/logo/logo2.png') }}" class="img-fluid" alt="Logo Mytems" style="max-width: 200px;">
-                                </div>
+                                <div class="mx-auto mb-4 text-center logo-container">
+    <img src="{{ asset('assets/logo/logo.png') }}" 
+         class="img-fluid logo-light" 
+         alt="Logo Mytems">
+
+    <img src="{{ asset('assets/logo/logo2.png') }}" 
+         class="img-fluid logo-dark" 
+         alt="Logo Mytems">
+</div>
+
+<style>
+    /* Tamaño general para ambos */
+    .logo-light, .logo-dark {
+        max-width: 200px;
+        height: auto;
+    }
+
+    /* 1. Por defecto, ocultamos el logo dark */
+    .logo-dark {
+        display: none !important;
+    }
+
+    /* 2. Si el tema es dark, ocultamos el light y mostramos el dark */
+    [data-bs-theme="dark"] .logo-light {
+        display: none !important;
+    }
+
+    [data-bs-theme="dark"] .logo-dark {
+        display: inline-block !important;
+    }
+</style>
                                 <div class="card border-0 p-lg-3 shadow-lg">
                                     <div class="card-body">
                                         <div class="text-center mb-4">
@@ -102,13 +129,11 @@
                                         </div>
 
                                         <div class="login-or">
-                                            <span class="span-or">Gestión rápida, simple y segura</span>
+                                            <span class="span-or text-muted">&copy; 2022 - {{ date('Y') }}</span>
                                         </div>
 
                                         <div class="text-center">
-                                            <h6 class="fw-normal fs-14 mb-0">¿Aún no tienes una cuenta?
-                                                <a href="register.html" class="text-primary-mytems fw-bold"> Regístrate</a>
-                                            </h6>
+                                            <h6 class="fw-normal fs-14 mb-0">Gesti&oacute;n r&aacute;pida, simple y segura</h6>
                                         </div>
                                     </div>
                                 </div>
