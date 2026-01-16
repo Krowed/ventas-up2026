@@ -19,134 +19,139 @@
     </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Auth - Mytems</title>
+    <title>Acceso - Mytems</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sistema de Facturación Electrónica para Emprendedores">
     <meta name="author" content="Mytems EIRL">
     <link rel="preload" href="fonts/outfit-regular.woff2" as="font" type="font/ttf" crossorigin>
+    
     <style>
         body {
             font-family: 'Outfit', sans-serif !important;
-            /* Evita que el texto desaparezca mientras carga */
             visibility: visible !important;
         }
+        /* Estilos críticos para los logos según tu JS */
+        .logo-light, .logo-dark { max-width: 180px; height: auto; }
+        .logo-dark { display: none !important; }
+        [data-bs-theme="dark"] .logo-light { display: none !important; }
+        [data-bs-theme="dark"] .logo-dark { display: inline-block !important; }
+
+        /* Ajustes de diseño profesional */
+        .auth-container { min-vh-100; }
+        .form-section { background-color: var(--bs-body-bg); }
+        .visual-section { 
+            background: linear-gradient(135deg, rgba(13, 110, 253, 0.05) 0%, rgba(13, 110, 253, 0.1) 100%);
+            border-left: 1px solid var(--bs-border-color-translucent);
+        }
+        .input-group-text { background: transparent; }
+        .cursor-pointer { cursor: pointer; }
     </style>
+
     <script src="{{ asset('assets/js/theme-script.js') }}"></script>
-
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/logo/favicon.ico') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
-
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/tabler-icons/tabler-icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/iconsax.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 
-<body class="bg-white">
+<body>
 
     <div class="main-wrapper auth-bg">
-        <div class="container-fuild">
-            <div class="w-100 overflow-hidden position-relative flex-wrap d-block vh-100">
+        <div class="container-fluid p-0">
+            <div class="row g-0 vh-100 overflow-hidden">
+                
+                <div class="col-lg-5 col-xl-4 d-flex flex-column justify-content-center form-section shadow-lg">
+                    <div class="p-4 p-md-5 mx-auto w-100" style="max-width: 440px;">
+                        
+                        <div class="mb-5 text-center text-lg-start">
+                            <img src="{{ asset('assets/logo/logo.png') }}" class="img-fluid logo-light" alt="Logo Mytems">
+                            <img src="{{ asset('assets/logo/logo2.png') }}" class="img-fluid logo-dark" alt="Logo Mytems">
+                        </div>
 
-                <div class="row justify-content-center align-items-center vh-100 overflow-auto flex-wrap ">
+                        <div class="mb-4">
+                            <h2 class="fw-bold mb-1">Bienvenido de nuevo</h2>
+                            <p class="text-muted">Ingresa tus credenciales para gestionar tu negocio.</p>
+                        </div>
 
-                    <div class="col-lg-5 mx-auto">
-                        <form action="index.html" class="d-flex justify-content-center align-items-center">
-                            <div class="d-flex flex-column justify-content-lg-center p-4 p-lg-0 pb-0 flex-fill">
-                                <div class="mx-auto mb-4 text-center logo-container">
-                                    <img src="{{ asset('assets/logo/logo.png') }}" class="img-fluid logo-light"
-                                        alt="Logo Mytems">
-
-                                    <img src="{{ asset('assets/logo/logo2.png') }}" class="img-fluid logo-dark"
-                                        alt="Logo Mytems">
+                        <form action="index.html">
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold small">Correo Electrónico</label>
+                                <div class="input-group border rounded-2 overflow-hidden">
+                                    <span class="input-group-text border-0">
+                                        <i class="isax isax-sms-notification"></i>
+                                    </span>
+                                    <input type="email" class="form-control border-0 ps-1" placeholder="ventas@mytems.cloud">
                                 </div>
+                            </div>
 
-                                <style>
-                                    /* Tamaño general para ambos */
-                                    .logo-light,
-                                    .logo-dark {
-                                        max-width: 200px;
-                                        height: auto;
-                                    }
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between align-items-end mb-1">
+                                    <label class="form-label fw-semibold small mb-0">Contraseña</label>
+                                    <a href="/reset-password.html" class="small text-primary text-decoration-none fw-medium">¿Olvidaste tu contraseña?</a>
+                                </div>
+                                <div class="pass-group input-group border rounded-2 overflow-hidden">
+                                    <span class="input-group-text border-0">
+                                        <i class="isax isax-lock"></i>
+                                    </span>
+                                    <input type="password" class="pass-inputs form-control border-0 ps-1" placeholder="••••••••">
+                                    <span class="input-group-text border-0 cursor-pointer">
+                                        <i class="isax toggle-password isax-eye-slash"></i>
+                                    </span>
+                                </div>
+                            </div>
 
-                                    /* 1. Por defecto, ocultamos el logo dark */
-                                    .logo-dark {
-                                        display: none !important;
-                                    }
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="remember_me">
+                                    <label class="form-check-label text-muted small" for="remember_me">
+                                        Mantener mi sesión iniciada
+                                    </label>
+                                </div>
+                            </div>
 
-                                    /* 2. Si el tema es dark, ocultamos el light y mostramos el dark */
-                                    [data-bs-theme="dark"] .logo-light {
-                                        display: none !important;
-                                    }
+                            <div class="mb-4">
+                                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
+                                    Acceder al panel
+                                </button>
+                            </div>
 
-                                    [data-bs-theme="dark"] .logo-dark {
-                                        display: inline-block !important;
-                                    }
-                                </style>
-                                <div class="card border-0 p-lg-3 shadow-lg">
-                                    <div class="card-body">
-                                        <div class="text-center mb-4">
-                                            <h4 class="mb-2 fw-bold">Bienvenido a Mytems EIRL 👋</h4>
-                                            <p class="mb-0 text-muted">Sistema de Facturación Electrónica para
-                                                Emprendedores</p>
-                                        </div>
+                            <div class="text-center pt-2 border-top">
+                                <p class="small text-muted mb-0">&copy; 2022 - {{ date('Y') }} Mytems EIRL</p>
+                                <span class="small text-muted opacity-75">Gesti&oacute;n r&aacute;pida, simple y segura</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
-                                        <div class="mb-3">
-                                            <label class="form-label">Correo Electrónico</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text border-end-0">
-                                                    <i class="isax isax-sms-notification"></i>
-                                                </span>
-                                                <input type="email" class="form-control border-start-0 ps-0"
-                                                    placeholder="ventas@mytems.cloud">
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="form-label">Contraseña</label>
-                                            <div class="pass-group input-group">
-                                                <span class="input-group-text border-end-0">
-                                                    <i class="isax isax-lock"></i>
-                                                </span>
-                                                <span class="isax toggle-password isax-eye-slash"></span>
-                                                <input type="password"
-                                                    class="pass-inputs form-control border-start-0 ps-0"
-                                                    placeholder="Escribe tu contraseña">
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex align-items-center justify-content-between mb-4">
-                                            <div class="d-flex align-items-center">
-                                                <div class="form-check form-check-md mb-0">
-                                                    <input class="form-check-input" id="remember_me" type="checkbox">
-                                                    <label for="remember_me"
-                                                        class="form-check-label mt-0 text-muted">Mantener sesión
-                                                        iniciada</label>
-                                                </div>
-                                            </div>
-                                            <div class="text-end">
-                                                <a href="/reset-password.html"
-                                                    class="text-primary-mytems fw-medium">¿Olvidaste tu contraseña?</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <button type="submit"
-                                                class="btn btn-primary text-white w-100 shadow-sm py-2">Acceder</button>
-                                        </div>
-
-                                        <div class="login-or">
-                                            <span class="span-or text-muted">&copy; 2022 - {{ date('Y') }}</span>
-                                        </div>
-
-                                        <div class="text-center">
-                                            <h6 class="fw-normal fs-14 mb-0">Gesti&oacute;n r&aacute;pida, simple y
-                                                segura</h6>
-                                        </div>
+                <div class="col-lg-7 col-xl-8 d-none d-lg-flex align-items-center justify-content-center visual-section p-5">
+                    <div class="text-center" style="max-width: 600px;">
+                        <div class="mb-4 d-inline-block p-4 rounded-circle bg-primary bg-opacity-10 text-primary">
+                            <i class="ti ti-receipt-tax fs-1"></i>
+                        </div>
+                        <h1 class="display-6 fw-bold mb-3">Facturación Electrónica sin complicaciones</h1>
+                        <p class="lead text-muted mb-5">Emite boletas, facturas y notas de crédito con validación directa ante SUNAT en tiempo real.</p>
+                        
+                        <div class="row g-4 text-start">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start">
+                                    <div class="me-3 text-primary"><i class="isax isax-security-safe fs-4"></i></div>
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Seguridad Total</h6>
+                                        <p class="small text-muted mb-0">Tus datos están protegidos bajo estándares de encriptación bancaria.</p>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start">
+                                    <div class="me-3 text-primary"><i class="isax isax-cloud-sunny fs-4"></i></div>
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Disponibilidad 24/7</h6>
+                                        <p class="small text-muted mb-0">Accede a tu negocio desde cualquier lugar del mundo y en cualquier dispositivo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -154,11 +159,8 @@
         </div>
     </div>
 
-    <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}" type="33c8e355801c2f792795f165-text/javascript"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" type="33c8e355801c2f792795f165-text/javascript"></script>
-    <script src="{{ asset('assets/js/script.js') }}" type="33c8e355801c2f792795f165-text/javascript"></script>
-    <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
-        data-cf-settings="33c8e355801c2f792795f165-|49" defer></script>
+    <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
 </body>
-
 </html>
