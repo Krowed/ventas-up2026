@@ -19,7 +19,7 @@
                 <div class="card-body p-4 pb-0">
                     <div class="row align-items-center mb-4">
                         <div class="col-auto">
-                            <img src="{{ asset('assets/logo/logo_pdf_black.png') }}" alt="Profile"
+                            <img src="{{ asset('assets/logo/logo_pdf.png') }}" alt="Profile"
                                 class="rounded border p-1" style="width: 85px; height: 85px; object-fit: contain;">
                         </div>
                         <div class="col ms-2">

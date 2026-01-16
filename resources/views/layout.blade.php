@@ -59,6 +59,7 @@
 
     <!-- Datetimepicker CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-datetimepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/waitMe.min.css') }}">
 
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/fontawesome.min.css') }}">
@@ -88,6 +89,7 @@
     <script src="{{ asset('assets/js/dataTables.bootstrap5.min.js') }}"></script>
 
     <script src="{{ asset('assets/plugins/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/waitMe.min.js') }}"></script>
 </head>
 
 <body id="layout-content">
@@ -191,45 +193,6 @@
                                 </span>
                             </div>
                             <!-- /Search -->
-
-                            <!-- Language Dropdown -->
-                            <div class="nav-item dropdown has-arrow flag-nav me-2">
-                                <a class="btn btn-menubar" data-bs-toggle="dropdown" href="javascript:void(0);"
-                                    role="button">
-                                    <img src="assets/img/flags/us.svg" alt="Language" class="img-fluid">
-                                </a>
-                                <ul class="dropdown-menu p-2">
-
-                                    <!-- item-->
-                                    <li>
-                                        <a href="javascript:void(0);" class="dropdown-item">
-                                            <img src="assets/img/flags/us.svg" alt="flag" class="me-2">English
-                                        </a>
-                                    </li>
-
-                                    <!-- item-->
-                                    <li>
-                                        <a href="javascript:void(0);" class="dropdown-item">
-                                            <img src="assets/img/flags/de.svg" alt="flag" class="me-2">German
-                                        </a>
-                                    </li>
-
-                                    <!-- item-->
-                                    <li>
-                                        <a href="javascript:void(0);" class="dropdown-item">
-                                            <img src="assets/img/flags/fr.svg" alt="flag" class="me-2">French
-                                        </a>
-                                    </li>
-
-                                    <!-- item-->
-                                    <li>
-                                        <a href="javascript:void(0);" class="dropdown-item">
-                                            <img src="assets/img/flags/ae.svg" alt="flag" class="me-2">Arabic
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </div>
 
                             <!-- Notification -->
                             <div class="notification_item me-2">
@@ -518,7 +481,7 @@
 
                                     <!-- Item-->
                                     <a class="dropdown-item logout d-flex align-items-center" href="login.html">
-                                        <i class="isax isax-logout me-2"></i>Sign Out
+                                        <i class="isax isax-logout me-2"></i>Cerrar sesi&oacute;n
                                     </a>
                                 </div>
                             </div>
