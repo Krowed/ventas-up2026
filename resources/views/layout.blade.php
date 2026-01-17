@@ -76,6 +76,7 @@
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style-toast.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style-load.css') }}">
 
 
@@ -1548,7 +1549,7 @@
             </div>
         </div>
         <!-- End Add Ledger -->
-
+        <div id="wa-toast-container"></div>
     </div>
     <!-- End Wrapper -->
 
@@ -1573,6 +1574,7 @@
 
     <!-- Custom JS -->
     <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script src="{{ asset('assets/js/functions.js') }}"></script>
 
 
     <script src="{{ asset('cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js') }}"

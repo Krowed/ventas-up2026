@@ -87,7 +87,7 @@
         <div class="container-fluid p-0">
             <div class="row g-0 vh-100 overflow-hidden">
 
-                <div class="col-lg-5 col-xl-4 d-flex flex-column justify-content-center form-section shadow-lg">
+                <div class="col-lg-5 col-xl-5 d-flex flex-column justify-content-center form-section shadow-lg">
                     <div class="p-4 p-md-5 mx-auto w-100" style="max-width: 440px;">
 
                         <div class="mb-5 text-center text-lg-center">
@@ -168,7 +168,7 @@
                 </div>
 
                 <div
-                    class="col-lg-7 col-xl-8 d-none d-lg-flex align-items-center justify-content-center visual-section p-5">
+                    class="col-lg-7 col-xl-7 d-none d-lg-flex align-items-center justify-content-center visual-section p-5">
                     <div class="text-center" style="max-width: 600px;">
                         <div class="mb-4 d-inline-block p-4 rounded-circle bg-primary bg-opacity-10 text-primary">
                             <i class="ti ti-receipt-tax fs-1"></i>

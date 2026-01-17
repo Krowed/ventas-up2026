@@ -64,7 +64,7 @@
     });
 
     // --- EVENTOS DE GUARDADO ---
-
+    notify.success("Datos actualizados correctamente");
     // Guardar Información General
     $('body').on('click', '.btn-save-info', function(e) {
         e.preventDefault();

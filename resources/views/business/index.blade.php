@@ -129,7 +129,8 @@
                                 <div class="d-flex justify-content-end mt-4">
                                     <button type="button" class="btn btn-primary px-4 btn-save-info">
                                         <span class="text-save-info">Guardar cambios</span>
-                                        <span class="spinner-border spinner-border-sm d-none text-saving-info"></span>
+                                        <span class="spinner-border spinner-border-sm m-2 d-none text-saving-info"></span>
+                                        <span class="text-saving-info d-none">Guardando...</span>
                                     </button>
                                 </div>
                             </form>

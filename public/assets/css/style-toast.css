@@ -1,0 +1,227 @@
+
+/* ===============================
+   CONTENEDOR TOAST
+================================ */
+#wa-toast-container {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+/* ===============================
+   TOAST BASE
+================================ */
+.wa-toast {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  min-width: 270px;
+  max-width: 370px;
+  padding: 14px 18px 14px 20px;
+  border-radius: 12px;
+
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #e9edef;
+
+  pointer-events: auto;
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.35),
+    inset 0 0 0 1px rgba(255,255,255,.04);
+
+  animation: waToastIn .35s cubic-bezier(.2,.8,.2,1);
+}
+
+/* TEXTO */
+.wa-toast span {
+  flex: 1;
+  padding-left: 12px;
+  line-height: 1.35;
+}
+
+/* ===============================
+   FONDO BASE (SOLO SIN ESTADO)
+================================ */
+html[data-theme="dark"] .wa-toast:not(.success):not(.warning):not(.error):not(.info) {
+  background:
+    linear-gradient(
+      oklch(23% .006 285.885),
+      oklch(20% .006 285.885)
+    );
+}
+
+/* ===============================
+   ESTADOS (FRANJA REAL)
+================================ */
+
+/* SUCCESS */
+.wa-toast.success {
+  background:
+    linear-gradient(90deg, #25d366 0 6px, transparent 6px),
+    linear-gradient(
+      oklch(23% .006 285.885),
+      oklch(20% .006 285.885)
+    );
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.35),
+    0 0 14px rgba(37,211,102,.35),
+    inset 0 0 0 1px rgba(255,255,255,.04);
+}
+
+/* WARNING */
+.wa-toast.warning {
+  background:
+    linear-gradient(90deg, #fbbc05 0 6px, transparent 6px),
+    linear-gradient(
+      oklch(23% .006 285.885),
+      oklch(20% .006 285.885)
+    );
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.35),
+    0 0 14px rgba(251,188,5,.30),
+    inset 0 0 0 1px rgba(255,255,255,.04);
+}
+
+/* ERROR */
+.wa-toast.error {
+  background:
+    linear-gradient(90deg, #ea4335 0 6px, transparent 6px),
+    linear-gradient(
+      oklch(23% .006 285.885),
+      oklch(20% .006 285.885)
+    );
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.35),
+    0 0 14px rgba(234,67,53,.35),
+    inset 0 0 0 1px rgba(255,255,255,.04);
+}
+
+/* INFO */
+.wa-toast.info {
+  background:
+    linear-gradient(90deg, #8696a0 0 6px, transparent 6px),
+    linear-gradient(
+      oklch(23% .006 285.885),
+      oklch(20% .006 285.885)
+    );
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.35),
+    0 0 14px rgba(134,150,160,.25),
+    inset 0 0 0 1px rgba(255,255,255,.04);
+}
+
+/* ===============================
+   SALIDA TIPO BARRIDO
+================================ */
+.wa-toast.is-hiding {
+  animation: waToastOut .45s cubic-bezier(.4,0,.2,1) forwards;
+}
+
+/* ===============================
+   ANIMACIONES
+================================ */
+@keyframes waToastIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes waToastOut {
+  to {
+    opacity: 0;
+    transform: translateX(140%);
+  }
+}
+
+/* Fondo modal */
+.wa-confirm-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Visible */
+.wa-confirm-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Contenido */
+.wa-confirm-content {
+    background: oklch(23% .006 285.885);
+    border-radius: 12px;
+    padding: 20px 24px;
+    max-width: 380px;
+    width: 90%;
+    text-align: center;
+    color: #e9edef;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
+    animation: modalIn 0.35s cubic-bezier(.2,.8,.2,1);
+}
+
+/* Icono */
+.wa-confirm-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+/* Mensaje */
+.wa-confirm-message {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+/* Botones */
+.wa-confirm-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.wa-confirm-btn {
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Colores según tipo */
+.wa-confirm-btn.yes { background-color: #25d366; color: white; }
+.wa-confirm-btn.no  { background-color: #ea4335; color: white; }
+.wa-confirm-btn:hover { opacity: 0.85; }
+
+/* Animaciones */
+@keyframes modalIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+@keyframes modalOut {
+    to { transform: scale(0.7); opacity: 0; }
+}
