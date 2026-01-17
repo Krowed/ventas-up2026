@@ -19,6 +19,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+Route::get('/establishment', function () {
+    return view('establishment');
+});
+
 Route::get('/', [LoginController::class, 'index'])->name('login');
 
 Route::controller(BusinessController::class)->prefix('business')->group(function () {
