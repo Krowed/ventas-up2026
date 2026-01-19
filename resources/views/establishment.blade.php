@@ -22,7 +22,7 @@
     <title>Seleccionar Establecimiento - Mytems</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Mytems EIRL">
-
+    <link rel="preload" href="fonts/outfit-regular.woff2" as="font" type="font/ttf" crossorigin>
     <style>
         body {
             font-family: 'Outfit', sans-serif !important;

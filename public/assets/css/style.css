@@ -22556,6 +22556,45 @@ table td a:hover {
   left: 60%;
 }
 
+/* 1. Base del botón */
+.btn-save-info, .btn-save-user {
+    position: relative !important;
+}
 
+/* 2. Ocultar contenido original */
+.btn-loading-active > *:not(.waitMe) {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
 
+/* 3. Contenedor de waitMe alineado al centro */
+.btn-loading-active .waitMe_content {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+    top: 0 !important;
+    margin: 0 !important;
+}
+
+/* 4. EL LOADER: Reducimos su contenedor para acercarlo al texto */
+.btn-loading-active .waitMe_progress {
+    width: 16px !important;    /* Igual al maxSize para que no sobre espacio */
+    height: 16px !important;
+    margin: 0 4px 0 0 !important; /* BAJAMOS de 8px a 4px para que esté pegado */
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* 5. EL TEXTO: Sin espacios extra */
+.btn-loading-active .waitMe_text {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+}
 /*# sourceMappingURL=style.css.map */

@@ -1,16 +1,11 @@
 <script>
     $(document).ready(function() {
-    // 1. Inicialización de Select2
     $(".select2_department, .select2_province, .select2_district").select2({
         placeholder: "[SELECCIONE]",
         width: '100%'
     });
 
-    // 2. Carga inicial de datos
     load_ubigeo();
-
-    // --- EVENTOS DE CAMBIO (UBIGEO) ---
-
     $('select[name="departamento"]').on('change', function() {
         let value = $(this).val();
         if (!value) return;
@@ -63,27 +58,26 @@
         });
     });
 
-    // --- EVENTOS DE GUARDADO ---
-    notify.success("Datos actualizados correctamente");
     // Guardar Información General
     $('body').on('click', '.btn-save-info', function(e) {
         e.preventDefault();
+        let btn  = $(this);
         let form = $('#form-info').serialize();
-        
+       
         $.ajax({
             url: "{{ route('admin.save_info_business') }}",
             method: 'POST',
             data: form,
             beforeSend: function() {
-                toggleButtons('.btn-save-info', '.text-save-info', '.text-saving-info', true);
+                toggleBtnWaitMe(btn, true);
             },
             success: function(r) {
-                toggleButtons('.btn-save-info', '.text-save-info', '.text-saving-info', false);
-                toast_msg(r.msg, r.type);
+                toggleBtnWaitMe(btn, false);
+                notify.success(r.msg);
             },
             error: function() {
-                toggleButtons('.btn-save-info', '.text-save-info', '.text-saving-info', false);
-                toast_msg('Error al conectar con el servidor', 'error');
+                toggleBtnWaitMe(btn, false);
+                notify.error("Error al conectar con el servidor");
             }
         });
     });
@@ -170,15 +164,5 @@ function load_ubigeo() {
     });
 }
 
-function toggleButtons(btnClass, textClass, spinnerClass, isLoading) {
-    if (isLoading) {
-        $(btnClass).prop('disabled', true);
-        $(textClass).addClass('d-none');
-        $(spinnerClass).removeClass('d-none');
-    } else {
-        $(btnClass).prop('disabled', false);
-        $(textClass).removeClass('d-none');
-        $(spinnerClass).addClass('d-none');
-    }
-}
+
 </script>
