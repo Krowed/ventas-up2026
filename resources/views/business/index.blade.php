@@ -183,30 +183,24 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label class="form-label fw-bold text-sm d-block mb-2">Entorno del Servidor
-                                            SUNAT</label>
-                                        <div class="btn-group w-100" role="group" aria-label="Selección de servidor">
-                                            <input type="radio" class="btn-check" name="servidor_sunat" id="beta"
-                                                value="3" {{ $business->servidor_sunat == 3 ? 'checked' : '' }}
-                                                autocomplete="off">
-                                            <label
-                                                class="btn btn-outline-info d-flex align-items-center justify-content-center gap-2 py-2"
-                                                for="beta">
-                                                <i class="isax isax-status-up fs-16"></i>
-                                                <span class="fw-semibold">Beta</span>
-                                            </label>
+    <label class="form-label fw-bold text-sm">
+        Entorno Sunat
+    </label>
+    <div class="btn-group w-100 shadow-sm" style="border-radius: 8px; overflow: hidden;" role="group">
+        <input type="radio" class="btn-check" name="servidor_sunat" id="beta" value="3" {{ $business->servidor_sunat == 3 ? 'checked' : '' }}>
+        <label class="btn btn-outline-light border text-dark d-flex align-items-center justify-content-center gap-2 py-2" for="beta">
+            <i class="isax isax-status-up fs-18 text-info"></i>
+            <span class="fw-medium">Pruebas (Beta)</span>
+        </label>
 
-                                            <input type="radio" class="btn-check" name="servidor_sunat" id="prod"
-                                                value="1" {{ $business->servidor_sunat == 1 ? 'checked' : '' }}
-                                                autocomplete="off">
-                                            <label
-                                                class="btn btn-outline-info d-flex align-items-center justify-content-center gap-2 py-2"
-                                                for="prod">
-                                                <i class="isax isax-verify fs-16"></i>
-                                                <span class="fw-semibold">Producción</span>
-                                            </label>
-                                        </div>
-                                    </div>
+        <input type="radio" class="btn-check" name="servidor_sunat" id="prod" value="1" {{ $business->servidor_sunat == 1 ? 'checked' : '' }}>
+        <label class="btn btn-outline-light border text-dark d-flex align-items-center justify-content-center gap-2 py-2" for="prod">
+            <i class="isax isax-verify fs-18 text-success"></i>
+            <span class="fw-medium">Producción</span>
+        </label>
+    </div>
+</div>
+                                    
                                 </div>
                                 <div class="d-flex justify-content-end mt-4">
                                     <button type="button" class="btn btn-primary px-4 btn-save-user">

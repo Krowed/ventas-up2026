@@ -128,18 +128,12 @@
     });
 });
 
-notify.success("Mensaje success");
-notify.warning("Mensaje warning");
-notify.info("Mensaje info");
-notify.error("Mensaje error");
-
 function load_ubigeo() {
     $.ajax({
         url: "{{ route('admin.load_ubigeo') }}",
         method: 'POST',
         data: { '_token': "{{ csrf_token() }}" },
         success: function(r) {
-            console.log("Datos recibidos del servidor:", r);
             let html_department = '<option value=""></option>';
             $.each(r.departments, function(index, department) {
                 let selected = (r.department && department.codigo == r.department.codigo) ? 'selected' : '';

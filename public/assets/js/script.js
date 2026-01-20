@@ -195,7 +195,7 @@ Template Name: Kanakku - Bootstrap Admin Template
 		var wHeight = $(window).height() - 60;
 		$slimScrolls.height(wHeight);
 		$('.sidebar .slimScrollDiv').height(wHeight);
-		$(window).resize(function() {
+		$(window).on('resize', function() {
 			var rHeight = $(window).height() - 60;
 			$slimScrolls.height(rHeight);
 			$('.sidebar .slimScrollDiv').height(rHeight);
