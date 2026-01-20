@@ -49,22 +49,22 @@ window.confirmarAccion = (titulo, texto, callback) => {
 };
 
 // confirmarAccion('¿Borrar?', 'No hay vuelta atrás', () => { ... tu lógica ... });
-const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content'); 
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
 function toggleBtnWaitMe(btn, isLoading, customText = 'Cargando...') {
     let $btn = $(btn);
-    
+
     if (isLoading) {
         $btn.css({
             'width': 'auto',
             'min-width': $btn.outerWidth() + 'px'
         });
-        
+
         $btn.prop('disabled', true).addClass('btn-loading-active');
         $btn.waitMe({
             effect: 'ios',
             text: customText,
-            bg: 'rgba(255,255,255,0)', 
+            bg: 'rgba(255,255,255,0)',
             color: '#ffffff',
             maxSize: '15',
             textPos: 'horizontal',

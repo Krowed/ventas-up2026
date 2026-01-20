@@ -1,4 +1,3 @@
-
 /* ===============================
    CONTENEDOR TOAST
 ================================ */
@@ -9,219 +8,172 @@
   z-index: 9999;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   pointer-events: none;
 }
 
 /* ===============================
-   TOAST BASE
+   TOAST BASE (OPTIMIZADO DARK)
 ================================ */
 .wa-toast {
   position: relative;
   display: flex;
   align-items: center;
-
-  min-width: 270px;
-  max-width: 370px;
-  padding: 14px 18px 14px 20px;
+  min-width: 280px;
+  max-width: 380px;
+  /* Espacio para el icono a la derecha */
+  padding: 14px 48px 14px 20px;
   border-radius: 12px;
-
   font-size: 13.5px;
   font-weight: 500;
   color: #e9edef;
-
   pointer-events: auto;
   overflow: hidden;
 
+  /* Efecto cristal sutil */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  /* Sombras y profundidad */
   box-shadow:
-    0 10px 30px rgba(0,0,0,.35),
-    inset 0 0 0 1px rgba(255,255,255,.04);
+    0 10px 30px rgba(0,0,0,.45),
+    inset 0 0 0 1px rgba(255,255,255,.05);
 
   animation: waToastIn .35s cubic-bezier(.2,.8,.2,1);
 }
 
-/* TEXTO */
+/* Texto interno */
 .wa-toast span {
   flex: 1;
   padding-left: 12px;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 /* ===============================
-   FONDO BASE (SOLO SIN ESTADO)
+   ESTADOS E ICONOS (::after)
 ================================ */
-html[data-theme="dark"] .wa-toast:not(.success):not(.warning):not(.error):not(.info) {
-  background:
-    linear-gradient(
-      oklch(23% .006 285.885),
-      oklch(20% .006 285.885)
-    );
-}
 
-/* ===============================
-   ESTADOS (FRANJA REAL)
-================================ */
+.wa-toast::after {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%); /* Centrado vertical exacto */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
+}
 
 /* SUCCESS */
 .wa-toast.success {
-  background:
-    linear-gradient(90deg, #25d366 0 6px, transparent 6px),
-    linear-gradient(
-      oklch(23% .006 285.885),
-      oklch(20% .006 285.885)
-    );
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.35),
-    0 0 14px rgba(37,211,102,.35),
-    inset 0 0 0 1px rgba(255,255,255,.04);
+  background: linear-gradient(90deg, #25d366 0 6px, transparent 6px),
+              linear-gradient(oklch(23% .006 285.885), oklch(20% .006 285.885));
+  box-shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 14px rgba(37,211,102,.30), inset 0 0 0 1px rgba(255,255,255,.04);
+}
+.wa-toast.success::after {
+  content: "✓";
+  color: #25d366;
+  font-size: 18px;
 }
 
 /* WARNING */
 .wa-toast.warning {
-  background:
-    linear-gradient(90deg, #fbbc05 0 6px, transparent 6px),
-    linear-gradient(
-      oklch(23% .006 285.885),
-      oklch(20% .006 285.885)
-    );
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.35),
-    0 0 14px rgba(251,188,5,.30),
-    inset 0 0 0 1px rgba(255,255,255,.04);
+  background: linear-gradient(90deg, #fbbc05 0 6px, transparent 6px),
+              linear-gradient(oklch(23% .006 285.885), oklch(20% .006 285.885));
+  box-shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 14px rgba(251,188,5,.25), inset 0 0 0 1px rgba(255,255,255,.04);
+}
+.wa-toast.warning::after {
+  content: "!";
+  color: #fbbc05;
+  font-size: 20px;
 }
 
 /* ERROR */
 .wa-toast.error {
-  background:
-    linear-gradient(90deg, #ea4335 0 6px, transparent 6px),
-    linear-gradient(
-      oklch(23% .006 285.885),
-      oklch(20% .006 285.885)
-    );
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.35),
-    0 0 14px rgba(234,67,53,.35),
-    inset 0 0 0 1px rgba(255,255,255,.04);
+  background: linear-gradient(90deg, #ea4335 0 6px, transparent 6px),
+              linear-gradient(oklch(23% .006 285.885), oklch(20% .006 285.885));
+  box-shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 14px rgba(234,67,53,.30), inset 0 0 0 1px rgba(255,255,255,.04);
+}
+.wa-toast.error::after {
+  content: "✕";
+  color: #ea4335;
+  font-size: 14px;
 }
 
 /* INFO */
 .wa-toast.info {
-  background:
-    linear-gradient(90deg, #8696a0 0 6px, transparent 6px),
-    linear-gradient(
-      oklch(23% .006 285.885),
-      oklch(20% .006 285.885)
-    );
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.35),
-    0 0 14px rgba(134,150,160,.25),
-    inset 0 0 0 1px rgba(255,255,255,.04);
+  background: linear-gradient(90deg, #8696a0 0 6px, transparent 6px),
+              linear-gradient(oklch(23% .006 285.885), oklch(20% .006 285.885));
+  box-shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 14px rgba(134,150,160,.20), inset 0 0 0 1px rgba(255,255,255,.04);
+}
+.wa-toast.info::after {
+  content: "i";
+  color: #aebac1;
+  font-style: italic;
+  font-family: "Georgia", serif;
+  font-size: 18px;
 }
 
 /* ===============================
-   SALIDA TIPO BARRIDO
+   ANIMACIONES (BARRIDO PRO)
 ================================ */
 .wa-toast.is-hiding {
-  animation: waToastOut .45s cubic-bezier(.4,0,.2,1) forwards;
+  /* Salida con aceleración natural */
+  animation: waToastOut 0.4s cubic-bezier(0.32, 0, 0.67, 0) forwards;
 }
 
-/* ===============================
-   ANIMACIONES
-================================ */
 @keyframes waToastIn {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes waToastOut {
   to {
     opacity: 0;
-    transform: translateX(140%);
+    transform: translateX(105%);
   }
 }
 
-/* Fondo modal */
+/* ===============================
+   MODAL DE CONFIRMACIÓN
+================================ */
 .wa-confirm-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 99999; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
 }
+.wa-confirm-modal.show { opacity: 1; pointer-events: auto; }
 
-/* Visible */
-.wa-confirm-modal.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Contenido */
 .wa-confirm-content {
     background: oklch(23% .006 285.885);
-    border-radius: 12px;
-    padding: 20px 24px;
-    max-width: 380px;
-    width: 90%;
-    text-align: center;
-    color: #e9edef;
-    box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 380px; width: 90%; text-align: center; color: #e9edef;
+    box-shadow: 0 20px 50px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.05);
     animation: modalIn 0.35s cubic-bezier(.2,.8,.2,1);
 }
 
-/* Icono */
-.wa-confirm-icon {
-    font-size: 36px;
-    margin-bottom: 12px;
-}
-
-/* Mensaje */
-.wa-confirm-message {
-    font-size: 15px;
-    margin-bottom: 20px;
-}
-
-/* Botones */
-.wa-confirm-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
+.wa-confirm-icon { font-size: 42px; margin-bottom: 12px; }
+.wa-confirm-message { font-size: 16px; margin-bottom: 24px; line-height: 1.5; }
+.wa-confirm-buttons { display: flex; justify-content: center; gap: 12px; }
 
 .wa-confirm-btn {
-    padding: 8px 18px;
-    border-radius: 8px;
+    padding: 10px 22px;
+    border-radius: 10px;
     border: none;
     font-weight: 600;
+    font-size: 14px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.2s ease;
 }
-
-/* Colores según tipo */
 .wa-confirm-btn.yes { background-color: #25d366; color: white; }
 .wa-confirm-btn.no  { background-color: #ea4335; color: white; }
-.wa-confirm-btn:hover { opacity: 0.85; }
+.wa-confirm-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.wa-confirm-btn:active { transform: translateY(0); }
 
-/* Animaciones */
 @keyframes modalIn {
-    from { transform: scale(0.7); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-}
-
-@keyframes modalOut {
-    to { transform: scale(0.7); opacity: 0; }
+    from { transform: scale(0.9) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
 }

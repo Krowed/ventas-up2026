@@ -63,7 +63,7 @@
         e.preventDefault();
         let btn  = $(this);
         let form = $('#form-info').serialize();
-       
+
         $.ajax({
             url: "{{ route('admin.save_info_business') }}",
             method: 'POST',
@@ -128,6 +128,11 @@
     });
 });
 
+notify.success("Mensaje success");
+notify.warning("Mensaje warning");
+notify.info("Mensaje info");
+notify.error("Mensaje error");
+
 function load_ubigeo() {
     $.ajax({
         url: "{{ route('admin.load_ubigeo') }}",
@@ -144,7 +149,7 @@ function load_ubigeo() {
             $('select[name="departamento"]').html(html_department).trigger('change.select2');
             if (r.ubigeo != null) {
                 $('#wrapper_province, #wrapper_district').removeClass('d-none');
-                
+
                 let html_province = '';
                 $.each(r.provinces, function(i, p) {
                     let sel = (p.codigo == r.province.codigo) ? 'selected' : '';
