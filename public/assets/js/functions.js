@@ -55,28 +55,48 @@ function toggleBtnWaitMe(btn, isLoading, customText = 'Cargando...') {
     let $btn = $(btn);
 
     if (isLoading) {
+        // Guardamos el HTML original
+        if (!$btn.data('original-text')) {
+            $btn.data('original-text', $btn.html());
+        }
+
+        // Guardamos el ancho real ANTES de modificar nada
+        let w = $btn.outerWidth();
+
+        // Aseguramos contexto para waitMe
+        $btn.css('position', 'relative');
+
+        // Vaciar visualmente el botón
+        $btn.html('&nbsp;');
+
         $btn.css({
-            'width': 'auto',
-            'min-width': $btn.outerWidth() + 'px'
+            'min-width': w + 'px'
         });
 
         $btn.prop('disabled', true).addClass('btn-loading-active');
+
         $btn.waitMe({
             effect: 'ios',
             text: customText,
             bg: 'rgba(255,255,255,0)',
             color: '#ffffff',
-            maxSize: '15',
+            maxSize: 15,
             textPos: 'horizontal',
             fontSize: '13px'
         });
     } else {
         $btn.waitMe('hide');
-        // Reseteamos estilos al terminar
+
+        if ($btn.data('original-text')) {
+            $btn.html($btn.data('original-text'));
+        }
+
         $btn.prop('disabled', false).removeClass('btn-loading-active');
         $btn.css({
-            'width': '',
-            'min-width': ''
+            'min-width': '',
+            'position': ''
         });
     }
 }
+
+

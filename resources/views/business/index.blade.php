@@ -19,8 +19,8 @@
                 <div class="card-body p-4 pb-0">
                     <div class="row align-items-center mb-4">
                         <div class="col-auto">
-                            <img src="{{ asset('assets/logo/logo_pdf.png') }}" alt="Profile"
-                                class="rounded border p-1" style="width: 85px; height: 85px; object-fit: contain;">
+                            <img src="{{ asset('assets/logo/logo_pdf.png') }}" alt="Profile" class="rounded border p-1"
+                                style="width: 85px; height: 85px; object-fit: contain;">
                         </div>
                         <div class="col ms-2">
                             <h5 class="fw-bold mb-1 d-flex align-items-center gap-2">
@@ -83,8 +83,10 @@
                                     <div class="col-md-6">
                                         <label class="form-label fw-medium text-sm">Teléfono de Contacto</label>
                                         <div class="input-group">
-                                            <span class="input-group-text bg-light-subtle"><i class="isax isax-call text-muted"></i></span>
-                                            <input type="text" name="telefono" class="form-control" placeholder="Ej. +51 999 999 999" value="{{ $business->telefono }}">
+                                            <span class="input-group-text bg-light-subtle"><i
+                                                    class="isax isax-call text-muted"></i></span>
+                                            <input type="text" name="telefono" class="form-control"
+                                                placeholder="Ej. +51 999 999 999" value="{{ $business->telefono }}">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -128,9 +130,7 @@
                                 </div>
                                 <div class="d-flex justify-content-end mt-4">
                                     <button type="button" class="btn btn-primary px-4 btn-save-info">
-                                        <span class="text-save-info">Guardar cambios</span>
-                                        <span class="spinner-border spinner-border-sm m-2 d-none text-saving-info"></span>
-                                        <span class="text-saving-info d-none">Guardando...</span>
+                                        Guardar cambios
                                     </button>
                                 </div>
                             </form>
@@ -183,24 +183,31 @@
                                     </div>
 
                                     <div class="col-md-6">
-    <label class="form-label fw-bold text-sm">
-        Entorno Sunat
-    </label>
-    <div class="btn-group w-100 shadow-sm" style="border-radius: 8px; overflow: hidden;" role="group">
-        <input type="radio" class="btn-check" name="servidor_sunat" id="beta" value="3" {{ $business->servidor_sunat == 3 ? 'checked' : '' }}>
-        <label class="btn btn-outline-light border text-dark d-flex align-items-center justify-content-center gap-2 py-2" for="beta">
-            <i class="isax isax-status-up fs-18 text-info"></i>
-            <span class="fw-medium">Pruebas (Beta)</span>
-        </label>
+                                        <label class="form-label fw-bold text-sm">
+                                            Entorno Sunat
+                                        </label>
+                                        <div class="btn-group w-100 shadow-sm"
+                                            style="border-radius: 8px; overflow: hidden;" role="group">
+                                            <input type="radio" class="btn-check" name="servidor_sunat" id="beta"
+                                                value="3" {{ $business->servidor_sunat == 3 ? 'checked' : '' }}>
+                                            <label
+                                                class="btn btn-outline-light border text-dark d-flex align-items-center justify-content-center gap-2 py-2"
+                                                for="beta">
+                                                <i class="isax isax-status-up fs-18 text-info"></i>
+                                                <span class="fw-medium">Pruebas (Beta)</span>
+                                            </label>
 
-        <input type="radio" class="btn-check" name="servidor_sunat" id="prod" value="1" {{ $business->servidor_sunat == 1 ? 'checked' : '' }}>
-        <label class="btn btn-outline-light border text-dark d-flex align-items-center justify-content-center gap-2 py-2" for="prod">
-            <i class="isax isax-verify fs-18 text-success"></i>
-            <span class="fw-medium">Producción</span>
-        </label>
-    </div>
-</div>
-                                    
+                                            <input type="radio" class="btn-check" name="servidor_sunat" id="prod"
+                                                value="1" {{ $business->servidor_sunat == 1 ? 'checked' : '' }}>
+                                            <label
+                                                class="btn btn-outline-light border text-dark d-flex align-items-center justify-content-center gap-2 py-2"
+                                                for="prod">
+                                                <i class="isax isax-verify fs-18 text-success"></i>
+                                                <span class="fw-medium">Producción</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="d-flex justify-content-end mt-4">
                                     <button type="button" class="btn btn-primary px-4 btn-save-user">

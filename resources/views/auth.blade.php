@@ -20,6 +20,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Acceso - Mytems</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sistema de Facturación Electrónica para Emprendedores">
     <meta name="author" content="Mytems EIRL">
@@ -77,8 +78,15 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/logo/favicon.ico') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/tabler-icons/tabler-icons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/iconsax.css') }}">
+    <link rel="preload" href="{{ asset('assets/css/iconsax.css') }}" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/css/iconsax.css') }}">
+    </noscript>
+
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/waitMe.min.css') }}">
 </head>
 
 <body>
@@ -112,15 +120,24 @@
                             <p class="text-muted">Ingresa tus credenciales.</p>
                         </div>
 
-                        <form action="index.html">
+                        <form action="{{ route('login.auth') }}" method="POST" id="formLogin">
+                            @csrf
                             <div class="mb-3">
                                 <label class="form-label fw-semibold small">Correo Electr&oacute;nico</label>
-                                <div class="input-group border rounded-2 overflow-hidden">
-                                    <span class="input-group-text border-0">
+                                <div class="input-group overflow-hidden">
+                                    <span class="input-group-text">
                                         <i class="isax isax-sms-notification"></i>
                                     </span>
-                                    <input type="email" class="form-control border-0 ps-1"
-                                        placeholder="ventas@mytems.cloud">
+                                    <input type="email" name="email"
+                                        class="form-control ps-1 {{ session('message') ? 'is-invalid' : '' }}"
+                                        placeholder="ventas@mytems.cloud" autofocus value="admin@mytems.cloud">
+
+                                    @if (session('message'))
+                                        <div class="invalid-feedback d-block">
+                                            {{ session('message') }}
+                                        </div>
+                                    @endif
+
                                 </div>
                             </div>
 
@@ -131,12 +148,12 @@
                                         class="small text-primary text-decoration-none fw-medium">¿Olvidaste tu
                                         contrase&ntilde;a?</a>
                                 </div>
-                                <div class="pass-group input-group border rounded-2 overflow-hidden">
+                                <div class="pass-group input-group overflow-hidden">
                                     <span class="input-group-text border-0">
                                         <i class="isax isax-lock"></i>
                                     </span>
                                     <input type="password" class="pass-inputs form-control border-0 ps-1"
-                                        placeholder="••••••••">
+                                        placeholder="••••••••" name="password">
                                     <span class="input-group-text border-0 cursor-pointer">
                                         <i class="isax toggle-password isax-eye-slash"></i>
                                     </span>
@@ -145,7 +162,7 @@
 
                             <div class="mb-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="remember_me">
+                                    <input class="form-check-input" type="checkbox" id="remember_me" name="remember">
                                     <label class="form-check-label text-muted small" for="remember_me">
                                         Mantener mi sesi&oacute;n iniciada
                                     </label>
@@ -153,7 +170,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
+                                <button class="btn btn-primary w-100 py-2 fw-bold shadow-sm btnAuth">
                                     Acceder al panel
                                 </button>
                             </div>
@@ -211,22 +228,24 @@
 
     <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/waitMe.min.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script src="{{ asset('assets/js/functions.js') }}"></script>
     <script>
         $(document).ready(function() {
             $(".toggle-password").click(function() {
-                // Cambia el icono: alterna entre el ojo y el ojo tachado
                 $(this).toggleClass("isax-eye-slash isax-eye");
-
-                // Selecciona el input que está en el mismo grupo
                 var input = $(this).closest(".pass-group").find(".pass-inputs");
-
-                // Cambia el tipo de input
                 if (input.attr("type") === "password") {
                     input.attr("type", "text");
                 } else {
                     input.attr("type", "password");
                 }
+            });
+
+            document.getElementById("formLogin").addEventListener("submit", function() {
+                let btn = document.querySelector(".btnAuth");
+                toggleBtnWaitMe(btn, true, "Verificando...");
             });
         });
     </script>

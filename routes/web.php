@@ -24,6 +24,10 @@ Route::get('/establishment', function () {
 });
 
 Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::controller(LoginController::class)->prefix('login')->group(function () {
+    Route::post('/auth', 'login')->name('login.auth');
+    Route::get('/logout', 'logout')->name('login.logout');
+});
 
 Route::controller(BusinessController::class)->prefix('business')->group(function () {
     Route::get('/', 'index')->name('admin.business');

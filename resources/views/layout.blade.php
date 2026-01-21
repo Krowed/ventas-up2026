@@ -38,10 +38,10 @@
             visibility: visible !important;
         }
     </style>
-    <script src="assets/js/theme-script.js"></script>
+    <script src="{{ asset('assets/js/theme-script.js') }}"></script>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/logo/favicon.ico') }}">
 
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">

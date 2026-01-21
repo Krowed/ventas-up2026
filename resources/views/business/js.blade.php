@@ -69,7 +69,7 @@
             method: 'POST',
             data: form,
             beforeSend: function() {
-                toggleBtnWaitMe(btn, true);
+                toggleBtnWaitMe(btn, true, "Guardando...");
             },
             success: function(r) {
                 toggleBtnWaitMe(btn, false);
