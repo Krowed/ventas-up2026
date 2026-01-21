@@ -15,7 +15,7 @@ class Kardex extends Model
 
     protected $fillable = [
         'idproducto',
-        'idalmacen',
+        'warehouse_id',
         'tipo_movimiento',   // COMPRA | VENTA | AJUSTE | TRASLADO
         'documento',         // FACTURA | BOLETA | NOTA_VENTA | COMPRA | etc
         'iddocumento',       // id de billings, buys, sale_notes, etc
@@ -42,7 +42,7 @@ class Kardex extends Model
 
     public function almacen()
     {
-        return $this->belongsTo(Warehouse::class, 'idalmacen');
+        return $this->belongsTo(Warehouse::class, 'warehouse_id');
     }
 
     public function usuario()

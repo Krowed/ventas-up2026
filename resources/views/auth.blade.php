@@ -122,39 +122,38 @@
 
                         <form action="{{ route('login.auth') }}" method="POST" id="formLogin">
                             @csrf
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold small">Correo Electr&oacute;nico</label>
-                                <div class="input-group overflow-hidden">
+                            <div class="mb-3 login-form">
+                                <label class="form-label fw-semibold small">Correo Electrónico</label>
+                                <div
+                                    class="input-group overflow-hidden {{ session('message') ? 'has-validation' : '' }}">
                                     <span class="input-group-text">
                                         <i class="isax isax-sms-notification"></i>
                                     </span>
                                     <input type="email" name="email"
                                         class="form-control ps-1 {{ session('message') ? 'is-invalid' : '' }}"
-                                        placeholder="ventas@mytems.cloud" autofocus value="admin@mytems.cloud">
-
-                                    @if (session('message'))
-                                        <div class="invalid-feedback d-block">
-                                            {{ session('message') }}
-                                        </div>
-                                    @endif
-
+                                        placeholder="ventas@mytems.cloud" value="admin@mytems.cloud">
                                 </div>
+                                @if (session('message'))
+                                    <div class="custom-error-message">
+                                        <i class="isax isax-info-circle me-1"></i> {{ session('message') }}
+                                    </div>
+                                @endif
                             </div>
 
-                            <div class="mb-3">
+                            <div class="mb-3 login-form">
                                 <div class="d-flex justify-content-between align-items-end mb-1">
-                                    <label class="form-label fw-semibold small mb-0">Contrase&ntilde;a</label>
+                                    <label class="form-label fw-semibold small mb-0">Contraseña</label>
                                     <a href="/reset-password.html"
                                         class="small text-primary text-decoration-none fw-medium">¿Olvidaste tu
-                                        contrase&ntilde;a?</a>
+                                        contraseña?</a>
                                 </div>
-                                <div class="pass-group input-group overflow-hidden">
-                                    <span class="input-group-text border-0">
+                                <div class="input-group overflow-hidden">
+                                    <span class="input-group-text">
                                         <i class="isax isax-lock"></i>
                                     </span>
-                                    <input type="password" class="pass-inputs form-control border-0 ps-1"
-                                        placeholder="••••••••" name="password">
-                                    <span class="input-group-text border-0 cursor-pointer">
+                                    <input type="password" class="form-control ps-1" placeholder="••••••••"
+                                        name="password">
+                                    <span class="input-group-text cursor-pointer">
                                         <i class="isax toggle-password isax-eye-slash"></i>
                                     </span>
                                 </div>
@@ -162,8 +161,8 @@
 
                             <div class="mb-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="remember_me" name="remember">
-                                    <label class="form-check-label text-muted small" for="remember_me">
+                                    <input class="form-check-input" type="checkbox" id="remember" name="remember">
+                                    <label class="form-check-label text-muted small" for="remember">
                                         Mantener mi sesi&oacute;n iniciada
                                     </label>
                                 </div>
@@ -190,7 +189,8 @@
                         <div class="mb-4 d-inline-block p-4 rounded-circle bg-primary bg-opacity-10 text-primary">
                             <i class="ti ti-receipt-tax fs-1"></i>
                         </div>
-                        <h1 class="display-6 fw-bold mb-3">Facturaci&oacute;n Electr&oacute;nica sin complicaciones</h1>
+                        <h1 class="display-6 fw-bold mb-3">Facturaci&oacute;n Electr&oacute;nica sin complicaciones
+                        </h1>
                         <p class="lead text-muted mb-5">
                             Olv&iacute;date de las complicaciones con SUNAT. Emite <strong>boletas y facturas al
                                 instante</strong> e impulsa el <strong>crecimiento de tu negocio</strong>.
@@ -234,12 +234,19 @@
     <script>
         $(document).ready(function() {
             $(".toggle-password").click(function() {
-                $(this).toggleClass("isax-eye-slash isax-eye");
-                var input = $(this).closest(".pass-group").find(".pass-inputs");
+                // 1. Identificamos el icono y el input
+                var icon = $(this);
+                var input = icon.closest(".input-group").find("input");
+
+                // 2. Cambiamos el tipo de input y el icono simultáneamente
                 if (input.attr("type") === "password") {
                     input.attr("type", "text");
+                    // Cambiamos a ojo abierto
+                    icon.removeClass("isax-eye-slash").addClass("isax-eye");
                 } else {
                     input.attr("type", "password");
+                    // Cambiamos a ojo cerrado
+                    icon.removeClass("isax-eye").addClass("isax-eye-slash");
                 }
             });
 

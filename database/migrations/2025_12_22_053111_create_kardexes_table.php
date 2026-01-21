@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             // Relaciones principales
             $table->integer('idproducto');
-            $table->integer('idalmacen');
+            $table->integer('warehouse_id');
 
             // Movimiento
             $table->string('tipo_movimiento');

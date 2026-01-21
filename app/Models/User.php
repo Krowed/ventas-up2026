@@ -21,6 +21,7 @@ class User extends Authenticatable
         'nombres',
         'email',
         'password',
+        'estado'
     ];
 
     /**
@@ -42,4 +43,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function warehouses() {
+        return $this->belongsToMany(Warehouse::class, 'user_warehouse');
+    }
 }

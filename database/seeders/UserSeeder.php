@@ -16,7 +16,8 @@ class UserSeeder extends Seeder
         User::create([
             'nombres'   => 'Administrador',
             'email'     => 'admin@mytems.cloud',
-            'password'  => bcrypt('Mytems.2026')
+            'password'  => bcrypt('Mytems.2026'),
+            'estado'    => 1
         ]);
     }
 }
