@@ -110,21 +110,21 @@
                             ];
                         @endphp
 
-                        @foreach($establecimientos as $est)
+                        @foreach($warehouses as $warehouse)
                         <div class="col-md-6">
-                            <div class="card establishment-card shadow-sm p-4 h-100" data-id="{{ $est['id'] }}">
+                            <div class="card establishment-card shadow-sm p-4 h-100" data-id="{{ $warehouse->id }}">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="icon-box me-3">
                                         <i class="isax isax-shop fs-3"></i>
                                     </div>
                                     <div>
-                                        <h6 class="fw-bold mb-0 text-body">{{ $est['nombre'] }}</h6>
-                                        <small class="text-muted">{{ $est['desc'] }}</small>
+                                        <h6 class="fw-bold mb-0 text-body">{{ $warehouse->descripcion }}</h6>
+                                        <small class="text-muted">{{ $warehouse->detalle }}</small>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center text-muted small mt-auto">
                                     <i class="ti ti-map-pin me-1 text-primary"></i>
-                                    {{ $est['dir'] }}
+                                    {{ $warehouse->direccion }}
                                 </div>
                             </div>
                         </div>
@@ -158,8 +158,7 @@
 
             $('#continueBtn').click(function() {
                 const id = $('.establishment-card.selected').data('id');
-                localStorage.setItem('selected_establishment', id);
-                window.location.href = `/dashboard?establishment=${id}`;
+                alert(id);
             });
         });
     </script>

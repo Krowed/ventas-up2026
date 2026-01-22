@@ -30,9 +30,9 @@ class LoginController extends Controller
             'password'  => $password
         ];
 
-        if(Auth::attempt($credentials, $remember)) {
+        if (Auth::attempt($credentials, $remember)) {
             $estado     = User::where('id', Auth::user()->id)->first()->estado;
-            if($estado != 1) {
+            if ($estado != 1) {
                 Auth::logout();
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();
@@ -41,14 +41,14 @@ class LoginController extends Controller
 
             $request->session()->regenerate();
             $user       = Auth::user();
-            dd($user->warehouses);
             // Si solo tiene un almacen asignado redireccionamos al dashboard principal
-            if() {
-
+            if ($user->warehouses->count() == 1) {
+                session(['selected_warehouse_id' => $user->warehouses->first()->id]);
+                return redirect()->route('dashboard.index');
             }
-            return redirect()->route('establishment');
-        } 
-        else {
+
+            return redirect()->route('warehouses.selector');
+        } else {
             Auth::logout();
             return back()->with('message', 'Usuario o contraseña incorrectos. Por favor, intente de nuevo.');
         }

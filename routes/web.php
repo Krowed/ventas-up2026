@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\WarehouseSelectorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,15 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('auth');
+
+Route::controller(WarehouseSelectorController::class)->prefix('warehouseselect')->group(function () {
+    Route::get('/', 'index')->name('warehouses.selector')->middleware('auth');
 });
 
-Route::get('/establishment', function () {
-    return view('establishment');
-});
 
-Route::get('/', [LoginController::class, 'index'])->name('login');
+
+Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::controller(LoginController::class)->prefix('login')->group(function () {
     Route::post('/auth', 'login')->name('login.auth');
     Route::get('/logout', 'logout')->name('login.logout');
