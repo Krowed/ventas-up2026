@@ -482,7 +482,7 @@
                                     <hr class="dropdown-divider my-2">
 
                                     <!-- Item-->
-                                    <a class="dropdown-item logout d-flex align-items-center" href="login.html">
+                                    <a class="dropdown-item logout d-flex align-items-center" href="{{ route('login.logout') }}">
                                         <i class="isax isax-logout me-2"></i>Cerrar sesi&oacute;n
                                     </a>
                                 </div>
@@ -1432,19 +1432,6 @@
                             </li>
                         </ul>
                         <div class="sidebar-footer">
-                            <div class="trial-item bg-white text-center border">
-                                <div class="bg-light p-3 text-center">
-                                    <img src="assets/img/icons/upgrade.svg" alt="img">
-                                </div>
-                                <div class="p-2">
-                                    <h6 class="fs-14 fw-semibold mb-1">Upgrade to More</h6>
-                                    <p class="fs-13 mb-2">Subscribe to get more with Premium Features</p>
-                                    <a href="plans-billings.html"
-                                        class="btn btn-sm btn-primary w-100 d-flex align-items-center justify-content-center"><i
-                                            class="isax isax-crown5 me-1"></i>Upgrade</a>
-                                </div>
-                                <a href="javascript:void(0);" class="close-icon"><i class="fa-solid fa-x"></i></a>
-                            </div>
                             <ul class="menu-list">
                                 <li>
                                     <a href="account-settings.html" data-bs-toggle="tooltip" data-bs-placement="top"

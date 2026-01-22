@@ -53,4 +53,11 @@ class LoginController extends Controller
             return back()->with('message', 'Usuario o contraseña incorrectos. Por favor, intente de nuevo.');
         }
     }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login');
+    }
 }

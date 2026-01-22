@@ -20,6 +20,11 @@ class EnsureWarehouseIsSelected
             return $next($request);
         }
 
+        // EXCEPCIÓN CRÍTICA: No redirigir si ya estamos intentando guardar el almacén o si es el selector
+        if ($request->routeIs('warehouses.selector') || $request->routeIs('warehouses.store') || $request->routeIs('logout')) {
+            return $next($request);
+        }
+
         // 2. Si ya está logueado pero NO ha seleccionado almacén
         if (!session()->has('selected_warehouse_id')) {
 

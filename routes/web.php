@@ -21,6 +21,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 Route::controller(WarehouseSelectorController::class)->prefix('warehouseselect')->group(function () {
     Route::get('/', 'index')->name('warehouses.selector')->middleware('auth');
+    Route::post('/store', 'store')->name('warehouses.store');
 });
 
 

@@ -18,6 +18,7 @@
         })();
     </script>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Seleccionar Establecimiento - Mytems</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,6 +88,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/tabler-icons/tabler-icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/iconsax.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/waitMe.min.css') }}">
 </head>
 
 <body>
@@ -94,7 +96,10 @@
     <div class="main-wrapper auth-bg">
         <div class="container-fluid p-0">
             <div class="row g-0 vh-100 overflow-hidden justify-content-center align-items-center">
-
+                <form id="selectionForm" action="{{ route('warehouses.store') }}" method="POST" style="display: none;">
+                    @csrf
+                    <input type="hidden" name="warehouse_id" id="warehouse_input">
+                </form>
                 <div class="col-lg-7 col-xl-6 d-flex flex-column justify-content-center form-section shadow-lg p-4 p-md-5 rounded-4">
                     
                     <div class="text-center mb-5">
@@ -103,13 +108,6 @@
                     </div>
 
                     <div class="row g-4 justify-content-center">
-                        @php
-                            $establecimientos = [
-                                ['id' => 1, 'nombre' => 'Ventas - Principal', 'desc' => 'Sede central de operaciones', 'dir' => 'Jr Las Palmas 848'],
-                                ['id' => 2, 'nombre' => 'Sucursal Norte', 'desc' => 'Punto de venta minorista', 'dir' => 'Av. Aviación 123']
-                            ];
-                        @endphp
-
                         @foreach($warehouses as $warehouse)
                         <div class="col-md-6">
                             <div class="card establishment-card shadow-sm p-4 h-100" data-id="{{ $warehouse->id }}">
@@ -147,7 +145,9 @@
     <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
-    
+    <script src="{{ asset('assets/js/waitMe.min.js') }}"></script>
+    <script src="{{ asset('assets/js/functions.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             $('.establishment-card').click(function() {
@@ -157,8 +157,14 @@
             });
 
             $('#continueBtn').click(function() {
-                const id = $('.establishment-card.selected').data('id');
-                alert(id);
+                const id = $('.establishment-card.selected').data('id'),
+                    warehouse_input = document.querySelector('#warehouse_input'),
+                    selectionForm   = document.querySelector('#selectionForm');
+                if(id) {
+                    warehouse_input.value = id;
+                    toggleBtnWaitMe(this, true, 'Redirigiendo...');
+                    selectionForm.submit();
+                }
             });
         });
     </script>
