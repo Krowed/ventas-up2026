@@ -208,23 +208,44 @@ Template Name: Kanakku - Bootstrap Admin Template
 	};
 
 	function init() {
-		var $this = Sidemenu;
-		$('.sidebar-menu a').on('click', function(e) {
-			if($(this).parent().hasClass('submenu')) {
-				e.preventDefault();
-			}
-			if(!$(this).hasClass('subdrop')) {
-				$('ul', $(this).parents('ul:first')).slideUp(250);
-				$('a', $(this).parents('ul:first')).removeClass('subdrop');
-				$(this).next('ul').slideDown(350);
-				$(this).addClass('subdrop');
-			} else if($(this).hasClass('subdrop')) {
-				$(this).removeClass('subdrop');
-				$(this).next('ul').slideUp(350);
-			}
-		});
-		$('.sidebar-menu ul li.submenu a.active').parents('li:last').children('a:first').addClass('active').trigger('click');
-	}
+    var $this = Sidemenu;
+    $('.sidebar-menu a').on('click', function(e) {
+        if($(this).next('ul').length > 0) {
+            if($(this).parent().hasClass('submenu')) {
+                e.preventDefault();
+            }
+            if(!$(this).hasClass('subdrop')) {
+                $('ul', $(this).parents('ul:first')).slideUp(250);
+                $('a', $(this).parents('ul:first')).removeClass('subdrop');
+                $(this).next('ul').slideDown(350);
+                $(this).addClass('subdrop');
+            } else if($(this).hasClass('subdrop')) {
+                $(this).removeClass('subdrop');
+                $(this).next('ul').slideUp(350);
+            }
+        } else {
+            $(this).removeClass('subdrop');
+        }
+    });
+
+    // 1. Abrir submenú activo
+    var activeLink = $('.sidebar-menu ul li.submenu a.active');
+    if (activeLink.length > 0) {
+        activeLink.parents('li:last').children('a:first').addClass('active').trigger('click');
+    }
+
+    // 2. Auto-scroll usando el método nativo del navegador
+    setTimeout(function() {
+        var activeItem = document.querySelector('.sidebar-menu a.active');
+        if (activeItem) {
+            // scrollIntoView es un método nativo de JS que ignora si hay plugins de scroll
+            activeItem.scrollIntoView({
+                behavior: 'smooth', // Animación suave
+                block: 'center'     // Intenta dejar el elemento en el centro de la vista
+            });
+        }
+    }, 800); 
+}
 
 	
 	// Sidebar Initiate

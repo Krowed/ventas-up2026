@@ -54,9 +54,21 @@ document.addEventListener("DOMContentLoaded", function() {
     // --- MANEJO DEL LOADER ---
     const loader = document.getElementById('ID-load');
     const wrapper = document.querySelector('.main-wrapper');
+    const body = document.body;
+
+    // Bloqueamos el scroll de inmediato
+    if (loader) {
+        body.classList.add('loader-active');
+    }
 
     window.addEventListener('load', function() {
-        if (loader) loader.classList.add('fade-out');
-        if (wrapper) wrapper.classList.add('content-visible');
+        if (loader) {
+            loader.classList.add('fade-out');
+            // Quitamos la clase para permitir el scroll de nuevo
+            body.classList.remove('loader-active'); 
+        }
+        if (wrapper) {
+            wrapper.classList.add('content-visible');
+        }
     });
 });

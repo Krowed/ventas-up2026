@@ -1,4 +1,9 @@
 /* --- NUEVAS REGLAS PARA DESVECIMIENTO SUAVE --- */
+body.loader-active {
+    overflow: hidden;
+    height: 100vh;
+}
+
 .ID-load {
     width: 100%;
     height: 100vh;
