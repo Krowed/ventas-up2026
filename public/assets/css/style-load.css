@@ -1,11 +1,13 @@
 /* --- NUEVAS REGLAS PARA DESVECIMIENTO SUAVE --- */
 body.loader-active {
-    overflow: hidden;
+    overflow: hidden !important; /* Forzamos que no exista scroll mientras carga */
     height: 100vh;
+    width: 100%;
+    position: fixed; /* Esto ayuda a congelar el fondo y evitar el recalculo de ancho */
 }
 
 .ID-load {
-    width: 100%;
+    width: 100vw; /* Cambiamos 100% por 100vw para ocupar el ancho total de la ventana */
     height: 100vh;
     z-index: 9999;
     display: flex;
@@ -15,6 +17,9 @@ body.loader-active {
     top: 0;
     left: 0;
     transition: opacity 0.6s ease, visibility 0.6s;
+    
+    /* ESTO EVITA EL SALTO: */
+    overflow: hidden; 
 }
 
 [data-bs-theme="light"] .ID-load {
