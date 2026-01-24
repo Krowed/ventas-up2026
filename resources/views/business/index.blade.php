@@ -183,27 +183,24 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label class="form-label fw-bold text-sm">
-                                            Entorno Sunat
-                                        </label>
-                                        <div class="btn-group w-100 shadow-sm"
-                                            style="border-radius: 8px; overflow: hidden;" role="group">
+                                        <label class="form-label text-muted small fw-bold">ENTORNO SUNAT</label>
+                                        <div class="btn-group w-100 shadow-none" role="group">
                                             <input type="radio" class="btn-check" name="servidor_sunat" id="beta"
                                                 value="3" {{ $business->servidor_sunat == 3 ? 'checked' : '' }}>
                                             <label
-                                                class="btn btn-outline-light border text-dark d-flex align-items-center justify-content-center gap-2 py-2"
-                                                for="beta">
-                                                <i class="isax isax-status-up fs-18 text-info"></i>
-                                                <span class="fw-medium">Pruebas (Beta)</span>
+                                                class="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 py-2"
+                                                for="beta" style="border-color: rgba(108, 117, 125, 0.3);">
+                                                <i class="isax isax-status-up fs-16"></i> <span
+                                                    class="small">Pruebas</span>
                                             </label>
 
                                             <input type="radio" class="btn-check" name="servidor_sunat" id="prod"
                                                 value="1" {{ $business->servidor_sunat == 1 ? 'checked' : '' }}>
                                             <label
-                                                class="btn btn-outline-light border text-dark d-flex align-items-center justify-content-center gap-2 py-2"
-                                                for="prod">
-                                                <i class="isax isax-verify fs-18 text-success"></i>
-                                                <span class="fw-medium">Producción</span>
+                                                class="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 py-2"
+                                                for="prod" style="border-color: rgba(108, 117, 125, 0.3);">
+                                                <i class="isax isax-verify fs-16"></i> <span
+                                                    class="small">Producción</span>
                                             </label>
                                         </div>
                                     </div>

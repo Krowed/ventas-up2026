@@ -23,7 +23,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dashboard - Mytems</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}"> 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Kanakku is a Sales, Invoices & Accounts Admin template for Accountant or Companies/Offices with various features for all your needs. Try Demo and Buy Now.">
@@ -482,7 +482,8 @@
                                     <hr class="dropdown-divider my-2">
 
                                     <!-- Item-->
-                                    <a class="dropdown-item logout d-flex align-items-center" href="{{ route('login.logout') }}">
+                                    <a class="dropdown-item logout d-flex align-items-center"
+                                        href="{{ route('login.logout') }}">
                                         <i class="isax isax-logout me-2"></i>Cerrar sesi&oacute;n
                                     </a>
                                 </div>
@@ -632,119 +633,117 @@
                 <div class="sidebar-inner" data-simplebar="">
                     <div id="sidebar-menu" class="sidebar-menu">
                         <ul>
-    <li class="menu-title"><span>Menu</span></li>
-    <li>
-        <ul>
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
-                <a href="{{ route('dashboard.index') }}">
-                    <i class="isax isax-element-45"></i><span>Principal</span>
-                </a>
-            </li>
-        </ul>
-    </li>
+                            <li class="menu-title"><span>Principal</span></li>
+                            <li>
+                                <ul>
+                                    <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+                                        <a href="{{ route('dashboard.index') }}">
+                                            <i class="isax isax-element-45"></i><span>Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li class="{{ request()->is('caja*') ? 'active' : '' }}">
+                                        <a href="#">
+                                            <i class="isax isax-money-tick5"></i><span>Arqueo de Caja</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-    <li class="menu-title"><span>Operaciones y Ventas</span></li>
-    <li>
-        <ul>
-            <li class="submenu">
-                <a href="javascript:void(0);">
-                    <i class="isax isax-receipt-item5"></i><span>Ventas</span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <ul>
-                    <li><a href="#">Cotizaciones</a></li>
-                    <li><a href="#">Nota de Venta</a></li>
-                    <li><a href="#">Punto de venta</a></li>
-                    <li><a href="#">Emisi&oacute;n de Comprobantes</a></li>
-                    <li><a href="#">Notas de Cr&eacute;dito</a></li>
-                </ul>
-            </li>
+                            <li class="menu-title"><span>Operaciones</span></li>
+                            <li>
+                                <ul>
+                                    <li class="submenu">
+                                        <a href="javascript:void(0);">
+                                            <i class="isax isax-receipt-item5"></i><span>Ventas</span>
+                                            <span class="menu-arrow"></span>
+                                        </a>
+                                        <ul>
+                                            <li><a href="#">Clientes</a></li>
+                                            <li><a href="#">Cotizaciones</a></li>
+                                            <li><a href="#">Notas de Venta</a></li>
+                                            <li><a href="#">Ventas / POS</a></li>
+                                            <li><a href="#">Notas de Crédito</a></li>
+                                        </ul>
+                                    </li>
 
-            <li class="submenu">
-                <a href="javascript:void(0);">
-                    <i class="isax isax-shopping-cart5"></i><span>Compras</span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <ul>
-                    <li><a href="#">Ingreso de Mercader&iacute;a</a></li>
-                    <li><a href="#">Orden de Compra</a></li>
-                    <li><a href="#">Gastos Externos</a></li>
-                </ul>
-            </li>
+                                    <li class="submenu">
+                                        <a href="javascript:void(0);">
+                                            <i class="isax isax-shopping-cart5"></i><span>Compras</span>
+                                            <span class="menu-arrow"></span>
+                                        </a>
+                                        <ul>
+                                            <li><a href="#">Proveedores</a></li>
+                                            <li><a href="#">Ordenes de Compra</a></li>
+                                            <li><a href="#">Compras</a></li>
+                                            <li><a href="#">Gastos</a></li>
+                                        </ul>
+                                    </li>
 
-            <li>
-                <a href="#">
-                    <i class="isax isax-profile-2user5"></i><span>Clientes</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="isax isax-shop5"></i><span>Proveedores</span>
-                </a>
-            </li>
-        </ul>
-    </li>
+                                    <li class="submenu">
+                                        <a href="javascript:void(0);">
+                                            <i class="isax isax-box5"></i><span>Inventario</span>
+                                            <span class="menu-arrow"></span>
+                                        </a>
+                                        <ul>
+                                            <li><a href="#">Productos</a></li>
+                                            <li><a href="#">Categorías</a></li>
+                                            <li><a href="#">Almacenes</a></li>
+                                            <li class="submenu submenu-two">
+                                                <a href="javascript:void(0);">Movimientos<span
+                                                        class="menu-arrow inside-submenu"></span></a>
+                                                <ul>
+                                                    <li><a href="#">Ingreso / Salida</a></li>
+                                                    <li><a href="#">Transferencias</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
 
-    <li class="menu-title"><span>Cat&aacute;logo</span></li>
-    <li>
-        <ul>
-            <li class="submenu">
-                <a href="javascript:void(0);">
-                    <i class="isax isax-box5"></i><span>Producto / Servicio</span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <ul>
-                    <li><a href="#">Lista de Productos</a></li>
-                    <li><a href="#">Categor&iacute;as</a></li>
-                    <li><a href="#">Marcas</a></li>
-                </ul>
-            </li>
-        </ul>
-    </li>
+                            <li class="menu-title"><span>Administración</span></li>
+                            <li>
+                                <ul>
+                                    <li class="submenu">
+                                        <a href="javascript:void(0);">
+                                            <i class="isax isax-chart-35"></i><span>Reportes</span>
+                                            <span class="menu-arrow"></span>
+                                        </a>
+                                        <ul>
+                                            <li><a href="#">Utilidades</a></li>
+                                            <li class="submenu submenu-two">
+                                                <a href="javascript:void(0);">Kardex<span
+                                                        class="menu-arrow inside-submenu"></span></a>
+                                                <ul>
+                                                    <li><a href="#">Físico</a></li>
+                                                    <li><a href="#">Valorado</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Ventas Detallado</a></li>
+                                            <li><a href="#">Reporte Gastos</a></li>
+                                        </ul>
+                                    </li>
 
-    <li class="menu-title"><span>Administraci&oacute;n</span></li>
-    <li>
-        <ul>
-            <li class="submenu">
-                <a href="javascript:void(0);">
-                    <i class="isax isax-money-send5"></i><span>Finanzas</span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <ul>
-                    <li><a href="#">Arqueo de Caja / Movimientos</a></li>
-                    <li><a href="#">Utilidades</a></li>
-                </ul>
-            </li>
+                                    <li class="submenu">
+                                        <a href="javascript:void(0);"
+                                            class="{{ request()->is('business*') ? 'active subdrop' : '' }}">
+                                            <i class="isax isax-setting-25"></i><span>Configuración</span>
+                                            <span class="menu-arrow"></span>
+                                        </a>
+                                        <ul style="{{ request()->is('business*') ? 'display: block;' : '' }}">
+                                            <li>
+                                                <a href="{{ route('admin.business') }}"
+                                                    class="{{ request()->is('business') ? 'active' : '' }}">Empresa</a>
+                                            </li>
+                                            <li><a href="#">Usuarios y Roles</a></li>
+                                            <li><a href="#">Permisos</a></li>
+                                            <li><a href="#">Series y Cajas</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
 
-            <li class="submenu">
-                <a href="javascript:void(0);">
-                    <i class="isax isax-chart-35"></i><span>Reportes</span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <ul>
-                    <li><a href="#">Reporte Ventas</a></li>
-                    <li><a href="#">Reporte Gastos</a></li>
-                    <li><a href="#">Kardex de Inventario</a></li>
-                </ul>
-            </li>
-
-            <li class="submenu {{ request()->is('business') ? 'active' : '' }}">
-                <a href="javascript:void(0);" class="{{ request()->is('business') ? 'subdrop' : '' }}">
-                    <i class="isax isax-setting-25"></i><span>Configuraci&oacute;n</span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <ul>
-                    <li>
-                        <a href="{{ route('admin.business') }}" class="{{ request()->is('business') ? 'active' : '' }}">Empresa</a>
-                    </li>
-                    <li><a href="#">Establecimientos</a></li>
-                    <li><a href="#">Almac&eacute;n</a></li> <li><a href="#">Cajas</a></li>
-                    <li><a href="#">Usuarios y Roles</a></li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-</ul>
                         <div class="sidebar-footer">
                             <ul class="menu-list">
                                 <li>
@@ -785,7 +784,8 @@
 
             <!-- Start Footer -->
             <div class="footer d-sm-flex align-items-center justify-content-between bg-white py-2 px-4 border-top">
-                <p class="text-dark mb-0">&copy; {{ date('Y') }} <a href="javascript:void(0);" class="link-primary">Mytems</a>,
+                <p class="text-dark mb-0">&copy; {{ date('Y') }} <a href="javascript:void(0);"
+                        class="link-primary">Mytems</a>,
                     Todos los derechos reservados</p>
                 <p class="text-dark">Version : 1.3.8</p>
             </div>
@@ -856,7 +856,7 @@
     <!-- End Wrapper -->
 
     <!-- jQuery -->
-    
+
 
     <!-- Daterangepikcer JS -->
     <script src="{{ asset('assets/js/moment.min.js') }}"></script>
@@ -872,7 +872,7 @@
     <script src="{{ asset('assets/plugins/apexchart/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/apexchart/chart-data.js') }}"></script>
 
-    
+
 
     <!-- Custom JS -->
     <script src="{{ asset('assets/js/script.js') }}"></script>
