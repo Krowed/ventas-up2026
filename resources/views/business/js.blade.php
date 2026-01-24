@@ -163,5 +163,14 @@ function load_ubigeo() {
     });
 }
 
-
+document.getElementById('cobrar_igv').addEventListener('change', function() {
+    const statusText = document.getElementById('status-igv');
+    if(this.checked) {
+        statusText.innerText = 'Régimen General (18%)';
+        statusText.classList.replace('text-success', 'text-primary');
+    } else {
+        statusText.innerText = 'Exonerado (Ley Amazonía)';
+        statusText.classList.replace('text-primary', 'text-success');
+    }
+});
 </script>

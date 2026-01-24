@@ -675,7 +675,13 @@
                                             <li><a href="#">Proveedores</a></li>
                                             <li><a href="#">Ordenes de Compra</a></li>
                                             <li><a href="#">Compras</a></li>
-                                            <li><a href="#">Gastos</a></li>
+                                            <li class="submenu submenu-two">
+                                                <a href="javascript:void(0);">Gastos<span class="menu-arrow inside-submenu"></span></a>
+                                                <ul>
+                                                    <li><a href="#">Tipo de Gasto</a></li>
+                                                    <li><a href="#">Egresos</a></li>
+                                                </ul>
+                                            </li>
                                         </ul>
                                     </li>
 
@@ -735,9 +741,11 @@
                                                 <a href="{{ route('admin.business') }}"
                                                     class="{{ request()->is('business') ? 'active' : '' }}">Empresa</a>
                                             </li>
-                                            <li><a href="#">Usuarios y Roles</a></li>
+                                            <li><a href="#">Usuarios</a></li>
+                                            <li><a href="#">Roles</a></li>
                                             <li><a href="#">Permisos</a></li>
-                                            <li><a href="#">Series y Cajas</a></li>
+                                            <li><a href="#">Series</a></li>
+                                            <li><a href="#">Cajas</a></li>
                                         </ul>
                                     </li>
                                 </ul>

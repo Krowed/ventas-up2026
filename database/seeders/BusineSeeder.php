@@ -32,7 +32,8 @@ class BusineSeeder extends Seeder
             'servidor_sunat'            => 3,
             'instancia_wpp'             => 'NTE5NTA3NzIyMDU=',
             'logo'                      => 'logo.jpg',
-            'pago'                      => 1
+            'pago'                      => 1,
+            'cobrar_igv'                => true
         ]);
     }
 }

@@ -123,9 +123,26 @@
                                             value="{{ $business->url_api }}">
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label fw-medium text-sm">URL Api</label>
+                                        <label class="form-label fw-medium text-sm">Instancia WhatsApp</label>
                                         <input type="text" name="instancia_wpp" class="form-control"
                                             value="{{ $business->instancia_wpp }}">
+                                    </div>
+                                    <div class="col-md-12 mt-3">
+                                        <div class="p-3 border rounded-3 bg-light-subtle">
+                                            <div class="form-check form-switch d-flex align-items-center justify-content-between ps-0">
+                                                <div>
+                                                    <label class="form-check-label fw-bold text-dark d-block" for="cobrar_igv">
+                                                        Estado del Impuesto: <span id="status-igv" class="{{ $business->cobrar_igv ? 'text-primary' : 'text-success' }}">
+                                                            {{ $business->cobrar_igv ? 'Régimen General (18%)' : 'Exonerado (Ley Amazonía)' }}
+                                                        </span>
+                                                    </label>
+                                                    <small class="text-muted">Active esta opción solo si su negocio está obligado a recaudar IGV.</small>
+                                                </div>
+                                                <input class="form-check-input ms-0" type="checkbox" role="switch" id="cobrar_igv" name="cobrar_igv" 
+                                                    style="width: 45px; height: 22px; cursor: pointer;"
+                                                    {{ $business->cobrar_igv ? 'checked' : '' }}>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end mt-4">

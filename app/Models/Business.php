@@ -30,5 +30,6 @@ class Business extends Model
         'instancia_wpp',
         'logo',
         'pago',
+        'impuesto'
     ];
 }

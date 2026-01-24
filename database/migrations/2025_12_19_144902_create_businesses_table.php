@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('instancia_wpp')->nullable();
             $table->string('logo')->nullable();
             $table->string('pago', 1)->nullable();
+            $table->boolean('cobrar_igv')->default(false);
             $table->timestamps();
         });
     }
