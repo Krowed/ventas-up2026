@@ -27,7 +27,8 @@ class Product extends Model
         'impuesto',
         'fecha_vencimiento',
         'opcion',
-        'stock_actual'
+        'stock_actual',
+        'imagen'
     ];
 
     public function brand()

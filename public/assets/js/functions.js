@@ -1,4 +1,4 @@
-function notify(message, type = 'info', duration = 3000) {
+function notify(message, type = 'info', duration = 3500) {
     const container = document.getElementById('wa-toast-container');
 
     const toast = document.createElement('div');

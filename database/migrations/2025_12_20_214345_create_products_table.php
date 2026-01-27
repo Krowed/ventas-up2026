@@ -28,6 +28,7 @@ return new class extends Migration
             $table->date('fecha_vencimiento')->nullable();
             $table->integer('opcion')->nullable();
             $table->integer('stock_actual')->nullable();
+            $table->string('imagen')->nullable();
             $table->timestamps();
         });
     }

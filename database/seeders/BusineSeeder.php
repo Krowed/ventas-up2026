@@ -33,7 +33,7 @@ class BusineSeeder extends Seeder
             'instancia_wpp'             => 'NTE5NTA3NzIyMDU=',
             'logo'                      => 'logo.jpg',
             'pago'                      => 1,
-            'cobrar_igv'                => true
+            'cobrar_igv'                => false
         ]);
     }
 }

@@ -33,7 +33,7 @@ Route::controller(LoginController::class)->prefix('login')->group(function () {
 });
 
 Route::controller(BusinessController::class)->prefix('business')->group(function () {
-    Route::get('/', 'index')->name('admin.business');
+    Route::get('/', 'index')->name('admin.business')->middleware('auth');
     Route::post('/load-ubigeo', 'load_ubigeo')->name('admin.load_ubigeo');
     Route::post('/load-provinces', 'load_provinces')->name('admin.load_provinces');
     Route::post('/load-districts', 'load_districts')->name('admin.load_districts');
@@ -42,15 +42,15 @@ Route::controller(BusinessController::class)->prefix('business')->group(function
     Route::post('/gen-json', 'gen_json')->name('admin.gen_json');
 });
 
-Route::controller(ProductController::class)->prefix('products')->group(function() {
-    Route::get('/'                    , 'index')->name('admin.products')->middleware('auth');
-    Route::get('/get'                 , 'get')->name('admin.get_products');
-    Route::post('/save'               , 'save')->name('admin.save_product');
-    Route::post('/detail'             , 'detail')->name('admin.detail_product');
-    Route::post('/store'              , 'store')->name('admin.store_product');
-    Route::post('/delete'             , 'delete')->name('admin.delete_product');
-    Route::post('/upload-excel'       , 'upload')->name('admin.upload_excel');
-    Route::get('/download-excel'      , 'download')->name('admin.download_excel');
-    Route::post('/view-detail'        , 'view_detail')->name('admin.view_detail');
+Route::controller(ProductController::class)->prefix('products')->group(function () {
+    Route::get('/', 'index')->name('admin.products')->middleware('auth');
+    Route::get('/get', 'get')->name('admin.get_products');
+    Route::post('/save', 'save')->name('admin.save_product');
+    Route::post('/detail', 'detail')->name('admin.detail_product');
+    Route::post('/store', 'store')->name('admin.store_product');
+    Route::post('/delete', 'delete')->name('admin.delete_product');
+    Route::post('/upload-excel', 'upload')->name('admin.upload_excel');
+    Route::get('/download-excel', 'download')->name('admin.download_excel');
+    Route::post('/view-detail', 'view_detail')->name('admin.view_detail');
     Route::post('/obtener-correlativo', 'obtenerCorrelativo')->name('products.obtenCorrelativo');
 });

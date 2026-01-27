@@ -22658,4 +22658,28 @@ table td a:hover {
     color: var(--gray-500);
 }
 
+.dt-buttons .btn {
+        transition: all 0.3s ease;
+        border-radius: 8px; /* Bordes más modernos */
+        font-weight: 500;
+    }
+    .dt-buttons .btn:hover {
+        transform: translateY(-2px); /* Pequeño salto hacia arriba */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Elimina visualmente cualquier icono de ordenamiento residual */
+    table.dataTable thead th {
+        background-image: none !important;
+    }
+    table.dataTable thead th:before,
+    table.dataTable thead th:after {
+        display: none !important;
+        content: "" !important;
+    }
+    /* Ajusta el padding para que el texto esté perfectamente centrado */
+    table.dataTable thead th.text-center {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
 /*# sourceMappingURL=style.css.map */

@@ -74,6 +74,7 @@
 
     <!-- Iconsax CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/iconsax.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/dataTables.bootstrap5.min.css') }}">
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -189,7 +190,7 @@
 
                             <!-- Search -->
                             <div class="input-icon-end position-relative me-2">
-                                <input type="text" class="form-control" placeholder="Search">
+                                <input type="text" class="form-control" placeholder="Buscar">
                                 <span class="input-icon-addon">
                                     <i class="isax isax-search-normal"></i>
                                 </span>
@@ -641,7 +642,12 @@
                                             <i class="isax isax-element-45"></i><span>Dashboard</span>
                                         </a>
                                     </li>
-                                    <li class="{{ request()->is('caja*') ? 'active' : '' }}">
+                                    <li class="">
+                                        <a href="#">
+                                        <i class="isax isax-monitor-recorder5"></i><span>Punto de Venta</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
                                         <a href="#">
                                             <i class="isax isax-money-tick5"></i><span>Arqueo de Caja</span>
                                         </a>
@@ -686,12 +692,14 @@
                                     </li>
 
                                     <li class="submenu">
-                                        <a href="javascript:void(0);">
+                                        <a href="javascript:void(0);"
+                                        class="{{ request()->is('products*') ? 'active subdrop' : '' }}">
                                             <i class="isax isax-box5"></i><span>Inventario</span>
                                             <span class="menu-arrow"></span>
                                         </a>
-                                        <ul>
-                                            <li><a href="#">Productos</a></li>
+                                        <ul style="{{ request()->is('products*') ? 'display: block;' : '' }}">
+                                            <li><a href="{{ route('admin.products') }}"
+                                                class="{{ request()->is('products') ? 'active' : '' }}">Productos</a></li>
                                             <li><a href="#">Categorías</a></li>
                                             <li><a href="#">Almacenes</a></li>
                                             <li class="submenu submenu-two">
