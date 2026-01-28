@@ -95,7 +95,7 @@
     <script src="{{ asset('assets/js/waitMe.min.js') }}"></script>
 </head>
 
-<body id="layout-content" class="loader-active">
+<body id="layout-content" class="loader-active {{ request()->is('products') ? 'mini-sidebar' : '' }}">
     @include('load')
     <!-- Begin Wrapper -->
     <div class="main-wrapper">

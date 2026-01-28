@@ -39,7 +39,7 @@ class ProductController extends Controller
             // Columna Combinada: Imagen + Nombre
             ->editColumn('descripcion', function ($product) {
                 $imagePath = (empty($product->imagen))
-                    ? asset("files/empty-product.png")
+                    ? asset("files/no-image.png")
                     : asset("files/products/" . $product->imagen);
 
                 return '
@@ -57,7 +57,7 @@ class ProductController extends Controller
             // Columna de Acciones estilo Plantilla
             ->addColumn('acciones', function ($product) {
                 return '
-                    <div class="action-item">
+                    <div class="">
                         <a href="javascript:void(0);" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="isax isax-more text-dark"></i>
                         </a>
