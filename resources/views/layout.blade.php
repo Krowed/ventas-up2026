@@ -71,6 +71,7 @@
 
     <!-- Simplebar CSS -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/simplebar/simplebar.min.css') }}">
+     <link rel="stylesheet" href="{{ asset('assets/plugins/quill/quill.snow.css') }}">
 
     <!-- Iconsax CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/iconsax.css') }}">
@@ -887,7 +888,7 @@
     <!-- Chart JS -->
     <script src="{{ asset('assets/plugins/apexchart/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/apexchart/chart-data.js') }}"></script>
-
+    <script src="{{ asset('assets/plugins/quill/quill.min.js') }}"></script>
 
 
     <!-- Custom JS -->

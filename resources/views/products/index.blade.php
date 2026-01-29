@@ -10,7 +10,7 @@
                     <div class="dt-buttons d-inline-flex gap-2">
                         <button class="btn btn-success waves-effect waves-light btn-create-product d-flex align-items-center" tabindex="0">
                             <i class="isax isax-add-circle me-md-1"></i>
-                            <span class="d-none d-sm-inline-block">Agregar producto</span>
+                            <span class="d-none d-sm-inline-block">Registrar producto</span>
                         </button>
 
                         <button class="btn btn-info waves-effect waves-light btn-upload d-flex align-items-center" tabindex="0">
@@ -40,8 +40,8 @@
         </div>
     </div>
 
-    {{-- @include('products.modal-register')
-    @include('products.modals') --}}
+    @include('products.modal-register')
+    {{-- @include('products.modals') --}}
 @endsection
 
 @section('scripts')
