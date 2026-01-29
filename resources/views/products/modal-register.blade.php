@@ -67,7 +67,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-3">
-                                <label class="form-label">Código / SKU <span class="text-danger">*</span></label>
+                                <label class="form-label">C&oacute;digo Interno <span class="text-muted fw-normal fs-12">(Opcional)</span></label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Cód. Referencia">
                                     <button class="btn btn-dark" type="button">Generar</button>
